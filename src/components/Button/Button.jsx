@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const Button = ({ primary, backgroundColor, label, size, onClick }) => {
+const Button = ({ primary, backgroundColor, label, size, onClick, onMouseOver }) => 
+{
   const baseStyles = "py-2 px-4 text-white font-bold rounded focus:outline-none focus:shadow-outline";
 
   const sizeStyles = {
@@ -20,6 +21,7 @@ const Button = ({ primary, backgroundColor, label, size, onClick }) => {
       className={buttonClass}
       style={{ backgroundColor: backgroundColor }}
       onClick={onClick}
+      onMouseOver={onMouseOver}
     >
       {label}
     </button>

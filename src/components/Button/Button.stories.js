@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./Button";
 import Center from "../Center/Center";
 
+
 export default {
   title: "Form/Button",
   component: Button,
@@ -17,6 +18,7 @@ export default {
       options: ['small', 'medium', 'large'],
     },
     onClick: { action: 'clicked' },
+    onMouseOver: { action: "over"}
   },
 };
 
