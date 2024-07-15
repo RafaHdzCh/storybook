@@ -1,37 +1,44 @@
-const button = `
-border-none 
-text-white 
-py-3 
-px-8 
-text-center 
-no-underline 
-inline-block 
-text-base 
-rounded 
-cursor-pointer
-`
-;
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-export const variants =
-{
-  primary: "bg-cyan-500",
-  success: "bg-green-500",
-  danger: "bg-red-500",
-  secondary: "bg-cyan-100 text-black",
-}
+const Button = ({ primary, backgroundColor, label, size, onClick }) => {
+  const baseStyles = "py-2 px-4 text-white font-bold rounded focus:outline-none focus:shadow-outline";
 
-export const sizes = 
-{
-  small: "py-2 px-4 text-sm",
-  medium: "py-3 px-8 text-base",
-  large: "py-4 px-12 text-lg",
-};
+  const sizeStyles = {
+    small: "text-sm",
+    medium: "text-base",
+    large: "text-lg",
+  };
 
-export default function Button({children, variant = variants.primary, size = sizes.medium}) 
-{
+  const primaryStyles = primary ? "bg-blue-500 hover:bg-blue-700" : "bg-gray-500 hover:bg-gray-700";
+
+  const buttonClass = classNames(baseStyles, sizeStyles[size], primaryStyles);
+
   return (
-    <button className={` ${button} ${variant} ${size}`}>
-      {children}
+    <button
+      className={buttonClass}
+      style={{ backgroundColor: backgroundColor }}
+      onClick={onClick}
+    >
+      {label}
     </button>
   );
-}
+};
+
+Button.propTypes = {
+  primary: PropTypes.bool,
+  backgroundColor: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+  onClick: PropTypes.func,
+};
+
+Button.defaultProps = {
+  primary: false,
+  backgroundColor: null,
+  size: "medium",
+  onClick: undefined,
+};
+
+export default Button;
