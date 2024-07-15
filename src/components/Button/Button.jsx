@@ -20,7 +20,8 @@ const Button = ({ primary, backgroundColor, label, size, onClick, onMouseOver })
     <button
       className={buttonClass}
       style={{ backgroundColor: backgroundColor }}
-      onClick={onClick}
+      onClick={() => console.log("Button clicked")}
+      //onClick={onClick}
       onMouseOver={onMouseOver}
     >
       {label}
