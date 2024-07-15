@@ -1,8 +1,10 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
-const config = {
+const config = 
+{
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
-  addons: [
+  addons: 
+  [
     "@storybook/preset-create-react-app",
     "@storybook/addon-onboarding",
     "@storybook/addon-links",
@@ -12,9 +14,19 @@ const config = {
     "@storybook/addon-viewport",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+
   ],
 
-  framework: {
+  parameters: 
+  {
+    viewport: 
+    {
+      viewports: INITIAL_VIEWPORTS,
+    },
+  },
+
+  framework: 
+  {
     name: "@storybook/react-webpack5",
     options: {},
   },
@@ -23,7 +35,8 @@ const config = {
 
   docs: {},
 
-  typescript: {
+  typescript: 
+  {
     reactDocgen: "react-docgen-typescript"
   }
 };

@@ -1,11 +1,18 @@
 import React from "react";
 import Button from "./Button";
 import Center from "../Center/Center";
-
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 export default {
   title: "Form/Button",
   component: Button,
+  parameters: 
+  {
+    viewport: 
+    {
+      viewports: INITIAL_VIEWPORTS,
+    },
+  },
   decorators: [(Story) => <Center><Story /></Center>],
   argTypes: 
   {
