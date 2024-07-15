@@ -15,5 +15,7 @@ const preview = {
         a.id === b.id ? 0 : a.id.localeCompare(b.id, undefined, { numeric: true }),
     },
   },
+
+  tags: ["autodocs"]
 };
 export default preview;
