@@ -17,6 +17,7 @@ export default {
   argTypes: 
   {
     primary: { control: 'boolean' },
+    disabled: { control: 'boolean' },
     backgroundColor: { control: 'color' },
     label: { control: 'text' },
     size: 
@@ -34,6 +35,7 @@ const Template = (args) => <Button {...args} />;
 export const GenericButton = Template.bind({});
 GenericButton.args = {
   primary: true,
+  disabled: false,
   label: 'Button',
   size: 'medium',
 };
