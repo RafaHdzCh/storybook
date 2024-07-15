@@ -1,27 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { action } from '@storybook/addon-actions';
 
-export default function Button({ primary, backgroundColor, label, size, onClick, onMouseOver, disabled }) 
-{
+export default function Button({ type ="primary", label="Button", size="medium", onClick=() => {}, onMouseOver=() => {}, disabled=false }) {
   const baseStyles = "py-2 px-4 text-white font-bold rounded focus:outline-none focus:shadow-outline";
-  const primaryStyles = disabled ? "" : primary ? "bg-blue-500 hover:bg-blue-700" : "bg-gray-500 hover:bg-gray-700";
   const disabledStyles = "bg-gray-300 cursor-not-allowed";
   const sizeStyles = {
     small: "text-sm",
     medium: "text-base",
     large: "text-lg",
   };
+  const typeStyles = {
+    primary: "bg-blue-500 hover:bg-blue-700",
+    secondary: "bg-purple-500 hover:bg-purple-700",
+    danger: "bg-red-500 hover:bg-red-700",
+    success: "bg-green-500 hover:bg-green-700",
+  };
 
-  const buttonClass = classNames(baseStyles, sizeStyles[size], primaryStyles, { [disabledStyles]: disabled });
+  const buttonClass = classNames(baseStyles, sizeStyles[size], disabled ? disabledStyles : typeStyles[type]);
 
   return (
     <button
       className={buttonClass}
-      style={{ backgroundColor: backgroundColor }}
       disabled={disabled}
-      onClick={onClick}
-      onMouseOver={onMouseOver}
+      onClick={() => {
+        action('Button clicked')(type);
+        onClick();
+      }}
+      //onMouseOver={onMouseOver}
     >
       {label}
     </button>
@@ -29,18 +36,10 @@ export default function Button({ primary, backgroundColor, label, size, onClick,
 };
 
 Button.propTypes = {
-  primary: PropTypes.bool,
+  type: PropTypes.oneOf(["primary", "secondary", "danger", "success"]),
   disabled: PropTypes.bool,
-  backgroundColor: PropTypes.string,
   label: PropTypes.string.isRequired,
   size: PropTypes.oneOf(["small", "medium", "large"]),
   onClick: PropTypes.func,
-};
-
-Button.defaultProps = {
-  primary: false,
-  disabled: false,
-  backgroundColor: null,
-  size: "medium",
-  onClick: undefined,
+  onMouseOver: PropTypes.func,
 };

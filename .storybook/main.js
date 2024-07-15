@@ -1,6 +1,10 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
-export const stories = ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"];
+export const stories = 
+[
+  "../src/**/*.mdx", 
+  "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+];
 export const addons = [
   "@storybook/preset-create-react-app",
   "@storybook/addon-onboarding",

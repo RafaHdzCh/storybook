@@ -6,36 +6,59 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 export default {
   title: "Form/Button",
   component: Button,
-  parameters: 
-  {
-    viewport: 
-    {
+  parameters: {
+    viewport: {
       viewports: INITIAL_VIEWPORTS,
     },
   },
   decorators: [(Story) => <Center><Story /></Center>],
-  argTypes: 
-  {
-    primary: { control: 'boolean' },
+  argTypes: {
+    type: {
+      control: 'select',
+      options: Object.freeze(['primary', 'secondary', 'danger', 'success']),
+    },
     disabled: { control: 'boolean' },
-    backgroundColor: { control: 'color' },
     label: { control: 'text' },
-    size: 
-    {
+    size: {
       control: 'select',
       options: ['small', 'medium', 'large'],
     },
     onClick: { action: 'clicked' },
-    onMouseOver: { action: "over"}
+    onMouseOver: { action: 'over' }
   },
 };
 
 const Template = (args) => <Button {...args} />;
 
-export const GenericButton = Template.bind({});
-GenericButton.args = {
-  primary: true,
+export const PrimaryButton = Template.bind({});
+PrimaryButton.args = {
+  type: "primary",
   disabled: false,
-  label: 'Button',
+  label: 'Primary',
+  size: 'medium',
+  
+};
+
+export const SecondaryButton = Template.bind({});
+SecondaryButton.args = {
+  type: "secondary",
+  disabled: false,
+  label: 'Secondary',
+  size: 'medium',
+};
+
+export const DangerButton = Template.bind({});
+DangerButton.args = {
+  type: "danger",
+  disabled: false,
+  label: 'Danger',
+  size: 'medium',
+};
+
+export const SuccessButton = Template.bind({});
+SuccessButton.args = {
+  type: "success",
+  disabled: false,
+  label: 'Success',
   size: 'medium',
 };
