@@ -1,10 +1,13 @@
 import React from "react";
 import Button, { variants, sizes } from "./Button";
+import Center from "../Center/Center";
 
 export default {
   title: "Form/Button",
   component: Button,
+  decorators: [story => <Center>{story()}</Center>]
 };
+
 
 export const PrimarySmall = () => 
 (
