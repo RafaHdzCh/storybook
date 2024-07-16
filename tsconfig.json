@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "module": "ES2015",
+    "target": "ES6",
+    "strict": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "jsxFactory": "React.createElement"
+  },
+  "include": ["src/**/*.tsx"],  // Incluye todos los archivos TSX dentro de /src y sus subcarpetas
+  "exclude": ["node_modules"]   // Excluye la carpeta node_modules de la compilación
+}
