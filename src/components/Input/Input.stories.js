@@ -6,7 +6,6 @@ export default {
   component: Input,
 };
 
-export const Default = () => <Input placeholder="" />;
 export const WithLabel = () => <Input placeholder="Enter text..." />;
 
-WithLabel.storyName = "Input with Label";
+WithLabel.storyName = "Input";
