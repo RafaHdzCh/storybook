@@ -3,7 +3,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import { DotBadges, DotBadgesProps } from '../../../components/Atoms/General/DotBadges';
 
 export default {
-  title: 'Atoms/DotBadges',
+  title: 'Atoms/General/DotBadges',
   component: DotBadges,
   argTypes: {
     color: { control: 'color' },

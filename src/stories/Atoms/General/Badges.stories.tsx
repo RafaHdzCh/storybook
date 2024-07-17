@@ -3,7 +3,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import { Badges, BadgesProps } from '../../../components/Atoms/General/Badges';
 
 export default {
-  title: 'Atoms/Badges',
+  title: 'Atoms/General/Badges',
   component: Badges,
   argTypes: {
     type: {

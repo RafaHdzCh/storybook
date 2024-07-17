@@ -3,7 +3,7 @@ import { ProgressBar } from '@fluentui/react-components';
 import React from 'react';
 
 export default {
-  title: 'Atoms/ProgressBar',
+  title: 'Atoms/General/ProgressBar',
   component: ProgressBar,
 } as Meta;
 
