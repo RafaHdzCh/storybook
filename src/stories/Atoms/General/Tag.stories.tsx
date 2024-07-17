@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import { Tag, TagProps } from '../../components/Atoms/Tag';
+import { Tag, TagProps } from '../../../components/Atoms/General/Tag';
 
 export default {
   title: 'Atoms/Tag',

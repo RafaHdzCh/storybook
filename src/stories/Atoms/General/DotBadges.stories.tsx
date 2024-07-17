@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { DotBadges, DotBadgesProps } from '../../components/Atoms/DotBadges';
+import { DotBadges, DotBadgesProps } from '../../../components/Atoms/General/DotBadges';
 
 export default {
   title: 'Atoms/DotBadges',

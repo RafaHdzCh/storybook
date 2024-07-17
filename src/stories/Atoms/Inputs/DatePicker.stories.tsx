@@ -12,12 +12,7 @@ export default {
         <Story />
       </div>
     ),
-  ],
-  argTypes: {
-    defaultSelectedDate: {
-      control: 'date',
-    },
-  },
+  ]
 } as Meta;
 
 const Template: StoryFn<DatePickerProps> = (args) => {
@@ -34,9 +29,4 @@ Default.args = {};
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,
-};
-
-export const ReadOnly = Template.bind({});
-ReadOnly.args = {
-  readOnly: true,
 };

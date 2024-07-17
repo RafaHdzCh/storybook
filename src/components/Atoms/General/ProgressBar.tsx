@@ -1,25 +1,18 @@
-import {
-  Field,
-  ProgressBar,
-  makeStyles,
-  shorthands,
-} from "@fluentui/react-components";
+import { Field,ProgressBar} from "@fluentui/react-components";
 import * as React from "react";
 
-const useStyles = makeStyles({
-  container: {
-    ...shorthands.margin("20px", "0px"),
-  },
-});
+const styles = `
+  mt-20
+  mb-0
+`;
 
-export const Shape = () => {
-  const styles = useStyles();
-
+export const Shape = () => 
+{
   return (
     <div>
       <Field validationMessage="Rounded ProgressBar" validationState="none">
         <ProgressBar
-          className={styles.container}
+          className={styles}
           shape="rounded"
           thickness="large"
           value={0.5}
@@ -27,7 +20,7 @@ export const Shape = () => {
       </Field>
       <Field validationMessage="Square ProgressBar" validationState="none">
         <ProgressBar
-          className={styles.container}
+          className={styles}
           shape="square"
           thickness="large"
           value={0.5}
