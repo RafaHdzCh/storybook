@@ -1,32 +1,19 @@
-import * as React from 'react';
+import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
-import { DatePicker, DatePickerProps } from '@fluentui/react-datepicker-compat';
-import { Field } from '@fluentui/react-components';
+import { Default } from "../../../components/Atoms/Inputs/DatePicker"
 
 export default {
   title: 'Atoms/Inputs/DatePicker',
-  component: DatePicker,
-  decorators: [
-    (Story) => (
-      <div style={{ padding: '20px' }}>
-        <Story />
-      </div>
-    ),
-  ]
+  component: Default
 } as Meta;
 
-const Template: StoryFn<DatePickerProps> = (args) => {
-  return (
-    <Field label="Select a date">
-      <DatePicker className="max-w-[300px]" placeholder="Select a date..." {...args} />
-    </Field>
-  );
-};
+const Template: StoryFn<typeof Default> = (args) => <Default {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
 
-export const Disabled = Template.bind({});
-Disabled.args = {
+export const DefaultDatePicker = Template.bind({});
+DefaultDatePicker.args = {};
+
+export const DisabledDatePicker = Template.bind({});
+DisabledDatePicker.args = {
   disabled: true,
 };

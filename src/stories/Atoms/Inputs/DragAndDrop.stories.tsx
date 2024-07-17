@@ -8,11 +8,10 @@ export default {
   title: 'Atoms/Inputs/DragAndDrop',
   component: DragAndDrop,
   decorators: [
-    (Story) => <DndProvider backend={HTML5Backend}>  
-      <div style={ {maxWidth: '1000px', height: '200px'} }>
-          {Story()}
-      </div>
-    </DndProvider>
+    (Story) => (
+    <DndProvider backend={HTML5Backend}>  
+      {Story()}
+    </DndProvider>)
   ]
 } as Meta<typeof DragAndDrop>
 

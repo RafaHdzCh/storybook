@@ -1,8 +1,10 @@
+import React from "react";
 import { DatePicker, DatePickerProps } from "@fluentui/react-datepicker-compat";
 import { Field } from "@fluentui/react-components";
-import * as React from "react";
 
-export const Default = (props: Partial<DatePickerProps>) => {
+interface DefaultProps extends Partial<DatePickerProps> {}
+
+export const Default: React.FC<DefaultProps> = (props) => {
   return (
     <Field label="Select a date">
       <DatePicker

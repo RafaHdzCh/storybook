@@ -10,6 +10,8 @@ export default {
     bgHover: { control: 'color' },
     textColor: { control: 'color' },
     textHover: { control: 'color' },
+    children: { table: { disable: true } },
+    className: { table: { disable: true } },
   },
 } as Meta<typeof FloatingButton>
 
