@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Badges, BadgesProps } from '../../components/Atoms/Badges';
 
 export default {
@@ -16,9 +16,28 @@ export default {
   },
 } as Meta<typeof Badges>;
 
-const Template: (args: BadgesProps) => JSX.Element = (args) => <Badges {...args} />;
+const Template: StoryFn<BadgesProps> = (args) => <Badges {...args} />;
 
-export const Success = () => <Template type="success" label="Success" />;
-export const Info = () => <Template type="info" label="Info" />;
-export const Warning = () => <Template type="warning" label="Warning" />;
-export const Fail = () => <Template type="fail" label="Fail" />;
+export const Success = Template.bind({});
+Success.args = {
+  type: 'success',
+  label: 'Success',
+};
+
+export const Info = Template.bind({});
+Info.args = {
+  type: 'info',
+  label: 'Info',
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  type: 'warning',
+  label: 'Warning',
+};
+
+export const Fail = Template.bind({});
+Fail.args = {
+  type: 'fail',
+  label: 'Fail',
+};

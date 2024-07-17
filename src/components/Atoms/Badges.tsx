@@ -7,48 +7,29 @@ export interface BadgesProps {
 
 export const Badges = ( {type, label}: BadgesProps) => {
 
-  let defaultStyles = {
-    paddingLeft: '2rem',
-    paddingRight: '2rem',
-    paddingTop: '0.25rem',
-    paddingBottom: '0.25rem',
-    maxWidth: 'min-content',
-    fontWeight: 700
-  }
+  const defaultStyles = `
+  px-8 py-2
+  max-w-min
+  font-bold
+  rounded-full
+`;
 
-  let styles
+  let styles;
 
   switch (type) {
     case 'success':
-        styles = {
-            ...defaultStyles,
-            backgroundColor: 'rgb(187 247 208)',
-            color: 'rgb(22 101 52)'
-        }
+        styles = `${defaultStyles} bg-green-200 text-green-800`
         break;
-  
     case 'info':
-        styles = {
-            ...defaultStyles,
-            backgroundColor: 'rgb(186 230 253)',
-            color: 'rgb(7 89 133)'
-        }
+        styles = `${defaultStyles} bg-blue-200 text-blue-800`
         break;
   
     case 'warning':
-        styles = {
-            ...defaultStyles,
-            backgroundColor: 'rgb(254 215 170)',
-            color: 'rgb(154 52 18)'
-        }
+        styles = `${defaultStyles} bg-yellow-200 text-yellow-800`
         break;
   
     case 'fail':
-        styles = {
-            ...defaultStyles,
-            backgroundColor: 'rgb(254 202 202)',
-            color: 'rgb(153 27 27)'
-        }
+        styles = `${defaultStyles} bg-red-200 text-red-800`
         break;
   
     default:
@@ -56,7 +37,7 @@ export const Badges = ( {type, label}: BadgesProps) => {
   }
 
   return (
-    <div style={styles} className='rounded-full'>
+    <div className={styles}>
         {label}
     </div>
   )
