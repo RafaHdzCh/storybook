@@ -2,7 +2,11 @@ import React from "react";
 
 const baseInput = "border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500";
 
-export default function Input({ placeholder }) 
+interface InputProps {
+  placeholder: string;
+}
+
+export default function Input({ placeholder }: InputProps) 
 {
   return (
     <input
