@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 interface ButtonProps {
-  Text: string;
+  label: string;
   bgColor?: string;
   bgHover?: string;
   textColor?: string;
@@ -21,70 +21,63 @@ const sizeClasses = {
   sm: 'px-5 text-sm',
   md: 'px-6 text-base',
   lg: 'px-8 text-lg',
-  xl: 'px-8 text-xl'
-}
+  xl: 'px-8 text-xl',
+};
 
-export const Button = (
-  { Text: children, 
-    outlined,
-    bgColor, 
-    bgHover, 
-    weight, 
-    size, 
-    icon, 
-    loading, 
-    disabled, 
-    shadow, 
-    textColor, 
-    textHover, 
-    onClick }: ButtonProps) => 
-  {
-  const [hoverStyle, SetHoverSyle] = useState<boolean>(false)
+export const Button: React.FC<ButtonProps> = ({
+  label: children,
+  size = 'sm',
+  weight = 'font-medium',
+  bgColor = 'bg-yellow-500',
+  bgHover = 'bg-yellow-600', // Eliminar el prefijo "hover:"
+  textColor = 'text-gray-950',
+  textHover = 'text-gray-950', // No debería necesitar cambios en el hover de color.
+  outlined = false,
+  loading = false,
+  disabled = false,
+  shadow = true,
+  icon,
+  onClick,
+}: ButtonProps) => {
+  const [hovered, setHovered] = useState(false);
 
-  const HandleMouseEnter = () => 
-  {
-    SetHoverSyle(true)
-  }
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
 
-  const HandleMouseLeave = () => 
-  {
-    SetHoverSyle(false)
-  }
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
 
-  const styles = `
-    
-    ${size ? `${sizeClasses[size]}` : `${sizeClasses["sm"]}`}
-    ${weight ? `${weight}` : 'font-medium'}
-    ${textColor ? `${textColor}` : 'text-gray-950'}
-    ${textHover ? `${textHover}` : 'text-gray-950'}
-    ${bgColor ? `${bgColor}` : "'bg-yellow-500'"}
-    ${hoverStyle ? `${bgHover}` : "'bg-yellow-500'"}
-    ${outlined ? "border-2 border-gray-950" : "border-none"}
-    ${disabled || loading ? 'cursor-not-allowed text-gray-50 bg-gray-200 hover:text-gray-50' : ''}
-    ${shadow ? 'shadow-md' : ''}
-    rounded
-    transition-all
-    duration-200
-    ease-in-out
-    flex
-    items-center
-    justify-center
-  `
+  const buttonClasses = [
+    sizeClasses[size],
+    weight,
+    bgColor,
+    hovered ? bgHover : '', // Aplicar bgHover solo cuando está en hover.
+    textColor,
+    hovered ? textHover : '', // Aplicar textHover solo cuando está en hover.
+    outlined ? 'border-2 border-gray-950' : 'border-none',
+    disabled || loading ? 'cursor-not-allowed text-gray-50 bg-gray-200 hover:text-gray-50' : '',
+    shadow ? 'shadow-md' : '',
+    'rounded',
+    'transition-all',
+    'duration-200',
+    'ease-in-out',
+    'flex',
+    'items-center',
+    'justify-center',
+  ];
 
   return (
     <button
-      className={styles}
-      onMouseEnter={HandleMouseEnter}
-      onMouseLeave={HandleMouseLeave}
+      className={buttonClasses.filter((cls) => cls !== '').join(' ')} // Unir clases con espacio en blanco.
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={(ev: any) => !disabled && !loading && onClick && onClick(ev)}
       disabled={disabled || loading}
     >
-      {loading ? (
-        <div className='spinner-xs mr-2'></div>
-      ) : (
-        icon && <span className='mr-2'>{icon}</span>
-      )}
+      {loading ? <div className='spinner-xs mr-2'></div> : icon && <span className='mr-2'>{icon}</span>}
       <span>{children}</span>
     </button>
-  )
-}
+  );
+};

@@ -1,77 +1,76 @@
-import React from 'react'
-import { MdAdd } from "react-icons/md";
-import { StoryFn, Meta } from '@storybook/react'
-import { Button } from '../../../components/Atoms/Inputs/Button'
+import React from 'react';
+import { MdAdd } from 'react-icons/md';
+import { StoryFn, Meta } from '@storybook/react';
+import { Button } from '../../../components/Atoms/Inputs/Button';
 
 export default {
   title: 'Atoms/Inputs/Button',
   component: Button,
-  argTypes: 
-  {
+  argTypes: {
     icon: { table: { disable: true } },
   },
-} as Meta<typeof Button>
+} as Meta<typeof Button>;
 
-const Template: StoryFn<typeof Button> = (args) => <Button {...args} />
+const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;
 
-export const Normal = Template.bind({})
+export const Normal = Template.bind({});
 Normal.args = {
   bgColor: 'bg-yellow-500',
-  bgHover: 'bg-yellow-600',
+  bgHover: 'bg-yellow-600', // Eliminado 'hover:'
   textColor: 'text-gray-700',
-  textHover: "hover:text-gray-900",
+  textHover: 'text-gray-900', // Eliminado 'hover:'
   shadow: true,
   disabled: false,
   loading: false,
   outlined: false,
   size: 'sm',
   weight: 'font-semibold',
-  Text: 'NORMAL',
-}
+  label: 'NORMAL',
+};
 
-export const NormalOutlined = Template.bind({})
+export const NormalOutlined = Template.bind({});
 NormalOutlined.args = {
   bgColor: 'bg-yellow-500',
-  bgHover: 'bg-yellow-600',
+  bgHover: 'bg-yellow-600', // Eliminado 'hover:'
   textColor: 'text-gray-700',
-  textHover: "hover:text-gray-900",
+  textHover: 'text-gray-900', // Eliminado 'hover:'
   shadow: true,
   disabled: false,
   loading: false,
   outlined: true,
   size: 'sm',
   weight: 'font-semibold',
-  Text: 'OUTLINED',
-}
+  label: 'OUTLINED',
+};
 
-export const NormalIcon = Template.bind({})
+export const NormalIcon = Template.bind({});
 NormalIcon.args = {
   bgColor: 'bg-yellow-500',
-  bgHover: 'bg-yellow-600',
+  bgHover: 'bg-yellow-600', // Eliminado 'hover:'
   textColor: 'text-gray-700',
-  textHover: "hover:text-gray-900",
+  textHover: 'text-gray-900', // Eliminado 'hover:'
   shadow: true,
   disabled: false,
   loading: false,
   outlined: false,
   size: 'sm',
   weight: 'font-semibold',
-  Text: 'ICON',
-  icon: <MdAdd className='-ml-3 text-xl self-center' />
-}
+  label: 'ICON',
+  icon: <MdAdd className='-ml-3 text-xl self-center' />,
+};
 
-export const NormalOutlinedIcon = Template.bind({})
+export const NormalOutlinedIcon = Template.bind({});
 NormalOutlinedIcon.args = {
   bgColor: 'bg-yellow-500',
-  bgHover: 'bg-yellow-600',
+  bgHover: 'bg-yellow-600', // Eliminado 'hover:'
   textColor: 'text-gray-700',
-  textHover: "hover:text-gray-900",
+  textHover: 'text-gray-900', // Eliminado 'hover:'
   shadow: true,
   disabled: false,
   loading: false,
   outlined: true,
   size: 'sm',
   weight: 'font-semibold',
-  Text: 'OUTLINED ICON',
-  icon: <MdAdd className='-ml-3 text-xl self-center' />
-}
+  label: 'OUTLINED ICON',
+  icon: <MdAdd className='-ml-3 text-xl self-center' />,
+};
