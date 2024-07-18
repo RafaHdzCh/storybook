@@ -16,9 +16,9 @@ const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;
 export const Normal = Template.bind({});
 Normal.args = {
   bgColor: 'bg-yellow-500',
-  bgHover: 'bg-yellow-600', // Eliminado 'hover:'
-  textColor: 'text-gray-700',
-  textHover: 'text-gray-900', // Eliminado 'hover:'
+  bgHover: 'bg-yellow-600', 
+  textColor: 'text-yellow-50',
+  textHover: 'text-yellow-200', 
   shadow: true,
   disabled: false,
   loading: false,
@@ -31,9 +31,9 @@ Normal.args = {
 export const NormalOutlined = Template.bind({});
 NormalOutlined.args = {
   bgColor: 'bg-yellow-500',
-  bgHover: 'bg-yellow-600', // Eliminado 'hover:'
-  textColor: 'text-gray-700',
-  textHover: 'text-gray-900', // Eliminado 'hover:'
+  bgHover: 'bg-yellow-600',
+  textColor: 'text-yellow-50',
+  textHover: 'text-yellow-200',
   shadow: true,
   disabled: false,
   loading: false,
@@ -46,9 +46,9 @@ NormalOutlined.args = {
 export const NormalIcon = Template.bind({});
 NormalIcon.args = {
   bgColor: 'bg-yellow-500',
-  bgHover: 'bg-yellow-600', // Eliminado 'hover:'
-  textColor: 'text-gray-700',
-  textHover: 'text-gray-900', // Eliminado 'hover:'
+  bgHover: 'bg-yellow-600',
+  textColor: 'text-yellow-50',
+  textHover: 'text-yellow-200',
   shadow: true,
   disabled: false,
   loading: false,
@@ -62,9 +62,9 @@ NormalIcon.args = {
 export const NormalOutlinedIcon = Template.bind({});
 NormalOutlinedIcon.args = {
   bgColor: 'bg-yellow-500',
-  bgHover: 'bg-yellow-600', // Eliminado 'hover:'
+  bgHover: 'bg-yellow-600',
   textColor: 'text-gray-700',
-  textHover: 'text-gray-900', // Eliminado 'hover:'
+  textHover: 'text-gray-900',
   shadow: true,
   disabled: false,
   loading: false,

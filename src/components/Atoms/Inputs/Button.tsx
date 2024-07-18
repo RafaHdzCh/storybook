@@ -29,9 +29,9 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'sm',
   weight = 'font-medium',
   bgColor = 'bg-yellow-500',
-  bgHover = 'bg-yellow-600', // Eliminar el prefijo "hover:"
-  textColor = 'text-gray-950',
-  textHover = 'text-gray-950', // No debería necesitar cambios en el hover de color.
+  bgHover = 'bg-yellow-600', 
+  textColor = 'text-yellow-50',
+  textHover = 'text-yellow-200',
   outlined = false,
   loading = false,
   disabled = false,
@@ -53,9 +53,9 @@ export const Button: React.FC<ButtonProps> = ({
     sizeClasses[size],
     weight,
     bgColor,
-    hovered ? bgHover : '', // Aplicar bgHover solo cuando está en hover.
+    hovered ? bgHover : '',
     textColor,
-    hovered ? textHover : '', // Aplicar textHover solo cuando está en hover.
+    hovered ? textHover : '',
     outlined ? 'border-2 border-gray-950' : 'border-none',
     disabled || loading ? 'cursor-not-allowed text-gray-50 bg-gray-200 hover:text-gray-50' : '',
     shadow ? 'shadow-md' : '',
@@ -70,7 +70,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={buttonClasses.filter((cls) => cls !== '').join(' ')} // Unir clases con espacio en blanco.
+      className={buttonClasses.filter((cls) => cls !== '').join(' ')}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={(ev: any) => !disabled && !loading && onClick && onClick(ev)}
