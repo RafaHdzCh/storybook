@@ -1,7 +1,7 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
-import { Tooltip } from '../../components/Atoms/Navigation/Tooltip'
-import { Button } from '../../components/Atoms/Inputs/Button'
+import { Tooltip } from '../../../components/Atoms/Navigation/Tooltip'
+import { Button } from '../../../components/Atoms/Inputs/Button'
 
 export default {
   title: 'Atoms/Navigation/Tooltip',
