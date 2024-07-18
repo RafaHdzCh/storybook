@@ -1,55 +1,62 @@
-import React from 'react'
+import React from 'react';
 import { MdAdd } from "react-icons/md";
-import { StoryFn, Meta } from '@storybook/react'
-import { FloatingButton } from '../../../components/Atoms/Inputs/FloatingButton'
+import { StoryFn, Meta } from '@storybook/react';
+import { FloatingButton } from '../../../components/Atoms/Inputs/FloatingButton';
 
 export default {
   title: 'Atoms/Inputs/Floating Button',
   component: FloatingButton,
   argTypes: {
+    bgColor: { control: 'color' },
     bgHover: { control: 'color' },
     textColor: { control: 'color' },
     textHover: { control: 'color' },
     children: { table: { disable: true } },
-    className: { table: { disable: true } },
+    shadow: { control: 'boolean' },
+    outlined: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg', 'xl'],
+    },
   },
-} as Meta<typeof FloatingButton>
+} as Meta<typeof FloatingButton>;
 
-const Template: StoryFn<typeof FloatingButton> = (args) => <FloatingButton {...args} />
+const Template: StoryFn<typeof FloatingButton> = (args) => <FloatingButton {...args} />;
 
-export const Normal = Template.bind({})
+export const Normal = Template.bind({});
 Normal.args = {
-  bgColor: 'rgb(245, 158, 11)',
-  bgHover: 'rgb(217, 119, 6)',
-  textColor: 'white',
-  textHover: 'white',
+  bgColor: 'bg-yellow-500',
+  bgHover: 'hover:bg-yellow-600',
+  textColor: 'text-gray-950',
+  textHover: 'hover:text-gray-950',
   disabled: false,
+  shadow: true,
+  outlined: false,
   size: 'md',
-  children: <MdAdd />
-} 
+  children: <MdAdd />,
+};
 
-export const Outlined = Template.bind({})
+export const Outlined = Template.bind({});
 Outlined.args = {
-  bgColor: 'rgb(245, 158, 11)',
-  bgHover: 'rgb(217, 119, 6)',
-  textColor: 'rgb(245, 158, 11)',
-  textHover: 'rgb(217, 119, 6)',
+  bgColor: 'bg-white', // Fondo blanco para el outline
+  bgHover: 'hover:bg-yellow-100', // Hover cambia a un amarillo muy claro
+  textColor: 'text-yellow-500', // Texto amarillo 500
+  textHover: 'hover:text-yellow-600', // Hover del texto amarillo 600
   disabled: false,
+  shadow: true,
   outlined: true,
   size: 'md',
-  children: <MdAdd/>,
-}
+  children: <MdAdd />,
+};
 
-export const Disabled = Template.bind({})
+export const Disabled = Template.bind({});
 Disabled.args = {
-  children: <MdAdd/>,
+  bgColor: 'bg-yellow-500',
+  bgHover: 'hover:bg-yellow-600',
   disabled: true,
-}
-
-export const OutlinedDisabled = Template.bind({})
-OutlinedDisabled.args = {
-  disabled: true,
-  outlined: true,
+  shadow: true,
+  outlined: false,
   size: 'md',
-  children: <MdAdd/>,
-}
+  children: <MdAdd />,
+};

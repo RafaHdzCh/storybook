@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -7,75 +7,59 @@ interface ButtonProps {
   textColor?: string;
   textHover?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  shadow: boolean;
   disabled?: boolean;
-  className?: string;
   outlined?: boolean;
   onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const FloatingButton: React.FC<ButtonProps> = ({
   children,
-  outlined,
-  bgColor = 'bg-yellow-400',
-  bgHover = 'hover:bg-yellow-500',
-  textColor = 'text-white',
-  textHover = 'hover:text-white',
   size = 'md',
+  bgColor = 'bg-yellow-500',
+  bgHover = 'hover:bg-yellow-600',
+  textColor = 'text-yellow-500',
+  textHover = 'hover:text-yellow-600',
+  shadow = true,
+  outlined = false,
   disabled = false,
-  className = '',
   onClick,
 }) => {
-  const [hoverStyle, setHoverStyle] = useState(false);
-
-  const handleMouseEnter = () => 
-  {
-    setHoverStyle(true);
+  const sizeClasses = {
+    sm: 'w-6 h-6 text-xl',
+    md: 'w-8 h-8 text-2xl',
+    lg: 'w-10 h-10 text-3xl',
+    xl: 'w-12 h-12 text-4xl',
   };
 
-  const handleMouseLeave = () => 
-  {
-    setHoverStyle(false);
-  };
+  const disabledClasses = `
+    cursor-not-allowed text-gray-400 bg-gray-100 hover:bg-gray-200 border-gray-200
+  `;
 
-  let fontSize;
-  switch (size) 
-  {
-    case 'sm':
-      fontSize = 'text-xs';
-      break;
-    case 'md':
-      fontSize = 'text-base';
-      break;
-    case 'lg':
-      fontSize = 'text-lg';
-      break;
-    case 'xl':
-      fontSize = 'text-xl';
-      break;
-    default:
-      fontSize = 'text-base';
-      break;
-  }
+  const outlinedClasses = `
+    ${outlined ? 'bg-white border-2 border-yellow-500' : ''}
+    ${outlined ? 'hover:bg-yellow-100 hover:border-yellow-600' : ''}
+  `;
 
-  const buttonStyles = `
-    ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}
-    ${fontSize}
-    ${outlined ? 'border-2' : 'border-0'}
-    ${outlined ? (hoverStyle ? `border-${bgHover.split(':')[1]} ${bgHover}` : `border-${bgColor.split(':')[1]} ${bgColor}`) : `${bgColor} ${bgHover}`}
-    ${hoverStyle ? `${textHover}` : `${textColor}`}
-    ${disabled ? 'bg-gray-300' : ''}
-    ${disabled ? 'text-gray-400' : ''}
-    ${disabled ? 'hover:bg-gray-300' : ''}
-    ${disabled ? 'hover:text-gray-400' : ''}
-    ${className}
+  const baseClasses = `
+    ${sizeClasses[size]} 
+    ${disabled ? disabledClasses : `${bgColor} ${bgHover}`}
+    ${disabled ? 'text-gray-400' : `${textColor} ${textHover}`}
+    ${shadow ? 'shadow-md' : ''} 
+    ${outlined && !disabled ? outlinedClasses : ''}
+    rounded-full 
+    transition-all 
+    duration-200 
+    ease-in-out 
+    flex 
+    items-center 
+    justify-center
   `;
 
   return (
     <button
       onClick={(ev) => (onClick && !disabled) && onClick(ev)}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`floating-button z-depth-1 ${buttonStyles}`}
+      className={baseClasses}
       disabled={disabled}
     >
       {children}
