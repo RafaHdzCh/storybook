@@ -25,7 +25,6 @@ const Template: StoryFn<TemplateProps> = ({ options = [], ...args }) => {
   );
 };
 
-
 export const Default = Template.bind({});
 Default.args = {
   options: ['Red', 'Green', 'Blue']

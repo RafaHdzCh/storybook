@@ -49,14 +49,3 @@ Outlined.args = {
   size: 'md',
   children: <MdAdd />,
 };
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  bgColor: 'bg-yellow-500',
-  bgHover: 'hover:bg-yellow-600',
-  disabled: true,
-  shadow: true,
-  outlined: false,
-  size: 'md',
-  children: <MdAdd />,
-};
