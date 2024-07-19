@@ -1,10 +1,11 @@
+// Modal.tsx
 import React, { useEffect, useState } from 'react'
 import { Section } from './Section'
 import { MdClear } from 'react-icons/md'
 
 interface ModalProps {
   title: string;
-  children: React.ReactElement;
+  children: React.ReactNode; // Cambiado de React.ReactElement a React.ReactNode
   toggle: boolean;
   width?: string;
   onDimiss?: () => void
@@ -30,7 +31,7 @@ export const Modal = ({ title, children, toggle, width, onDimiss }: ModalProps) 
         <Section title={title}>
           <MdClear onClick={() => { toggleModal(false); onDimiss && onDimiss() }} className='absolute text-lg cursor-pointer hover:text-gray-800 top-0 right-0 m-2' />
           <div>
-            { children }
+            {children}
           </div>
         </Section>
       </div>
