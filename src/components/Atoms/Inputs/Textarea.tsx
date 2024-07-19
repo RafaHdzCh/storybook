@@ -39,15 +39,16 @@ export const Textarea = ({
         placeholder={placeholder}
         maxLength={charactersLimit}
         ref={textareaRef}
-        className="p-4 textarea inputStyle w-full"
+        className="p-4 textarea inputStyle w-full border-2 border-black"
         rows={rows}
       />
       <div className="text-sm pt-sans ease-out duration-100 text-right">
-        {charactersLimit ? (
-          <p>{counter}/{charactersLimit}</p>
-        ) : (
-          charactersCounter && <p>{counter} Characters</p>
-        )}
+        {
+          charactersLimit ? 
+          (<p>{counter}/{charactersLimit}</p>) 
+          : 
+          (charactersCounter && <p>{counter} Characters</p>)
+        }
       </div>
     </div>
   );
