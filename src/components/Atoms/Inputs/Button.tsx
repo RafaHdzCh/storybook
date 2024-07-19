@@ -29,7 +29,7 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'sm',
   weight = 'font-medium',
   bgColor = 'bg-yellow-500',
-  bgHover = 'bg-yellow-600', 
+  bgHover = 'bg-yellow-600',
   textColor = 'text-yellow-50',
   textHover = 'text-yellow-200',
   outlined = false,
@@ -49,23 +49,36 @@ export const Button: React.FC<ButtonProps> = ({
     setHovered(false);
   };
 
+  const baseClasses = `
+    ${sizeClasses[size]}
+    ${weight}
+    ${shadow ? 'shadow-md' : ''}
+    rounded
+    transition-all
+    duration-200
+    ease-in-out
+    flex
+    items-center
+    justify-center
+  `;
+
+  const disabledClasses = `
+    cursor-not-allowed text-gray-600 bg-gray-200 border-gray-600
+  `;
+
+  const outlinedClasses = `
+    bg-white border-2 border-yellow-500 text-yellow-500
+    ${hovered ? 'hover:bg-yellow-100 hover:border-yellow-600 hover:text-yellow-600' : ''}
+  `;
+
+  const enabledClasses = `
+    ${bgColor} ${hovered ? bgHover : ''}
+    ${textColor} ${hovered ? textHover : ''}
+  `;
+
   const buttonClasses = [
-    sizeClasses[size],
-    weight,
-    bgColor,
-    hovered ? bgHover : '',
-    textColor,
-    hovered ? textHover : '',
-    outlined ? 'border-2 border-gray-950' : 'border-none',
-    disabled || loading ? 'cursor-not-allowed text-gray-50 bg-gray-200 hover:text-gray-50' : '',
-    shadow ? 'shadow-md' : '',
-    'rounded',
-    'transition-all',
-    'duration-200',
-    'ease-in-out',
-    'flex',
-    'items-center',
-    'justify-center',
+    baseClasses,
+    disabled ? disabledClasses : (outlined ? outlinedClasses : enabledClasses),
   ];
 
   return (
@@ -76,7 +89,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={(ev: any) => !disabled && !loading && onClick && onClick(ev)}
       disabled={disabled || loading}
     >
-      {loading ? <div className='spinner-xs mr-2'></div> : icon && <span className='mr-2'>{icon}</span>}
+      {loading ? <div className='spinner-xs mr-2'></div> : icon && <span className={`mr-2 ${disabled ? 'text-gray-600' : ''}`}>{icon}</span>}
       <span>{children}</span>
     </button>
   );

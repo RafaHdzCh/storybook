@@ -16,9 +16,9 @@ const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;
 export const Normal = Template.bind({});
 Normal.args = {
   bgColor: 'bg-yellow-500',
-  bgHover: 'bg-yellow-600', 
+  bgHover: 'bg-yellow-600',
   textColor: 'text-yellow-50',
-  textHover: 'text-yellow-200', 
+  textHover: 'text-yellow-200',
   shadow: true,
   disabled: false,
   loading: false,
