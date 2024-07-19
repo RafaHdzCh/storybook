@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { MdArrowDropDown } from 'react-icons/md';
 
 interface Option {
@@ -44,5 +44,5 @@ export const Dropdown = ({ label, options, deployOnHover = true, outlined = fals
         </ul>
       )}
     </div>
-  )
-}
+  );
+};
