@@ -17,5 +17,14 @@ export default {
 
 const Template: StoryFn<typeof DragAndDrop> = (args) => <DragAndDrop {...args} />
 
-export const Normal = Template.bind({})
-Normal.args = {}
+export const SingleFile = Template.bind({})
+SingleFile.args = 
+{
+  multipleFiles: false
+}
+
+export const MultipleFiles = Template.bind({})
+MultipleFiles.args = 
+{
+  multipleFiles: true
+}
