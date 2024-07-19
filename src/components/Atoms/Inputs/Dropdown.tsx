@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
 import { MdArrowDropDown } from 'react-icons/md';
 
-interface Item {
-  label: string | React.ReactElement;
-  link?: string;
-  onClick?: (ev: any) => void;
+interface Option {
+  value: string;
+  label: string;
 }
 
 interface DropdownProps {
   label: string | React.ReactElement;
-  list?: Item[];
+  options?: Option[];
   deployOnHover?: boolean;
   outlined?: boolean;
 }
 
-export const Dropdown = ({ label, list, deployOnHover = true, outlined = false }: DropdownProps) => {
+export const Dropdown = ({ label, options, deployOnHover = true, outlined = false }: DropdownProps) => {
   const [dropped, setDrop] = useState(false);
 
   return (
@@ -32,19 +31,14 @@ export const Dropdown = ({ label, list, deployOnHover = true, outlined = false }
         </span>
         <MdArrowDropDown className='text-2xl self-center' />
       </p>
-      {dropped && (
+      {dropped && options && (
         <ul className='shadow absolute mt-1 w-full bg-white border border-gray-200'>
-          {list && list.map((item, i) => (
+          {options.map((option, i) => (
             <li
               key={i}
-              className={`${i < list.length - 1 ? 'border-b-[1px]' : ''} px-2 py-2 cursor-pointer text-sm hover:bg-gray-100`}
-              onClick={(ev) => item.onClick && item.onClick(ev)}
+              className={`${i < options.length - 1 ? 'border-b-[1px]' : ''} px-2 py-2 cursor-pointer text-sm hover:bg-gray-100`}
             >
-              {item.link ? (
-                <a href={item.link}>{item.label}</a>
-              ) : (
-                <span>{item.label}</span>
-              )}
+              <span>{option.label}</span>
             </li>
           ))}
         </ul>
