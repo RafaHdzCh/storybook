@@ -3,7 +3,7 @@ import { StoryFn, Meta } from '@storybook/react'
 import { TextInput } from '../../../components/Atoms/Inputs/TextInput'
 
 export default {
-  title: 'Atoms/Inputs/Input',
+  title: 'Atoms/Inputs/TextInput',
   component: TextInput,
   decorators: [
     (Story) => <div style={ {maxWidth: '1000px'} }>

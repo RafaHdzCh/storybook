@@ -39,7 +39,7 @@ export const Textarea = ({
         placeholder={placeholder}
         maxLength={charactersLimit}
         ref={textareaRef}
-        className="p-4 textarea inputStyle w-full border-2 border-black"
+        className="p-4 textarea inputStyle w-full border-[1px] rounded-lg  border-gray-400/70"
         rows={rows}
       />
       <div className="text-sm pt-sans ease-out duration-100 text-right">
