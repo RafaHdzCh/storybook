@@ -26,7 +26,7 @@ export const MenuSection = ({ label, links, collapsed }:MenuProps) => {
 
   return (
     <div>
-      <a onClick={() => toggleCollapse(!collapse)} className='text-lg cursor-pointer hover:bg-gray-100 flex justify-between font-bold px-6 py-3'>
+      <a href='' onClick={() => toggleCollapse(!collapse)} className='text-lg cursor-pointer hover:bg-gray-100 flex justify-between font-bold px-6 py-3'>
         <div className='flex space-x-2'>
           <MdFolderOpen className='self-center text-xl' />
           <p className='antialiased self-center relative top-[1px]'>

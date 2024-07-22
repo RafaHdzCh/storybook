@@ -21,7 +21,7 @@ Normal.args = {
   position: 'static',
   backgroundColor: 'rgb(251 113 133)',
   children: <div className='flex text-white justify-between'>
-      <a href='' className='self-center text-white text-xl'>
+      <a href='/' className='self-center text-white text-xl'>
         LOGO
       </a>
     <div className='flex self-center justify-between'>
@@ -46,7 +46,7 @@ Transparent.args = {
   position: 'fixed',
   style: 'transparent',
   children: <div className='flex text-gray-600 justify-between'>
-      <a href='' className='self-center text-xl hover:text-gray-900'>
+      <a href='/' className='self-center text-xl hover:text-gray-900'>
         LOGO
       </a>
     <div className='flex self-center justify-between'>
@@ -71,7 +71,7 @@ Blurred.args = {
   position: 'fixed',
   style: 'blurred',
   children: <div className='flex text-gray-600 justify-between'>
-      <a href='' className='self-center text-xl'>
+      <a href='/' className='self-center text-xl'>
         LOGO
       </a>
     <div className='flex self-center justify-between'>

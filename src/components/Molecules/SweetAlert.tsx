@@ -20,26 +20,26 @@ export const SweetAlert: React.FC<SweetAlertProps> = ( {show, type, onConfirm, o
   }, [show])
   
   let icon
-  let buttonBgColor = ''
-  let buttonBgHover = ''
+  //let buttonBgColor = ''
+  //let buttonBgHover = ''
 
   switch (type) {
     case 'success':
       icon = <MdOutlineCheck className='text-[90px] text-emerald-500' />
-      buttonBgColor = 'rgb(16 185 129)'
-      buttonBgHover = 'rgb(5 150 105)'
+      //buttonBgColor = 'rgb(16 185 129)'
+      //buttonBgHover = 'rgb(5 150 105)'
       break;
       
     case 'warning':
       icon = <MdWarningAmber className='text-[90px] text-orange-500' />
-      buttonBgColor = 'rgb(249 115 22)'
-      buttonBgHover = 'rgb(234 88 12)'
+      //buttonBgColor = 'rgb(249 115 22)'
+      //buttonBgHover = 'rgb(234 88 12)'
     break;
       
     case 'danger':
       icon = <MdOutlineCancel className='text-[90px] text-rose-500' />
-      buttonBgColor = 'rgb(244 63 94)'
-      buttonBgHover = 'rgb(37 99 235)'
+      //buttonBgColor = 'rgb(244 63 94)'
+      //buttonBgHover = 'rgb(37 99 235)'
     break;
   
     default:

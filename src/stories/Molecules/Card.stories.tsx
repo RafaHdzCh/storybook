@@ -1,5 +1,4 @@
 import React from 'react'
-import { MdDownload} from "react-icons/md";
 import { StoryFn, Meta } from '@storybook/react'
 import { Card } from '../../components/Molecules/Card'
 import { Button } from '../../components/Atoms/Inputs/Button'
