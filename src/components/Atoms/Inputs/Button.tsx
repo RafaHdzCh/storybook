@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Spinner } from '@fluentui/react-components'; // Importa el Spinner
+
 
 interface ButtonProps {
   label: string;
@@ -6,6 +8,8 @@ interface ButtonProps {
   bgHover?: string;
   textColor?: string;
   textHover?: string;
+  outlineColor?: string;
+  outlineHover?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   icon?: any;
   shadow?: boolean;
@@ -28,10 +32,12 @@ export const Button: React.FC<ButtonProps> = ({
   label: children,
   size = 'sm',
   weight = 'font-medium',
-  bgColor = 'bg-yellow-500',
-  bgHover = 'bg-yellow-600',
-  textColor = 'text-yellow-50',
-  textHover = 'text-yellow-200',
+  bgColor = '#eab308',
+  bgHover = '#d97706',
+  textColor = '#fefce8',
+  textHover = '#fef08a',
+  outlineColor = '#eab308',
+  outlineHover = '#d97706', 
   outlined = false,
   loading = false,
   disabled = false,
@@ -53,6 +59,8 @@ export const Button: React.FC<ButtonProps> = ({
     ${sizeClasses[size]}
     ${weight}
     ${shadow ? 'shadow-md' : ''}
+    ${outlined ? 'border-2' : ''}
+    ${disabled ? 'cursor-not-allowed' : ''}
     rounded
     transition-all
     duration-200
@@ -62,34 +70,22 @@ export const Button: React.FC<ButtonProps> = ({
     justify-center
   `;
 
-  const disabledClasses = `
-    cursor-not-allowed text-gray-600 bg-gray-200 border-gray-600
-  `;
-
-  const outlinedClasses = `
-    bg-white border-2 border-yellow-500 text-yellow-500
-    ${hovered ? 'hover:bg-yellow-100 hover:border-yellow-600 hover:text-yellow-600' : ''}
-  `;
-
-  const enabledClasses = `
-    ${bgColor} ${hovered ? bgHover : ''}
-    ${textColor} ${hovered ? textHover : ''}
-  `;
-
-  const buttonClasses = [
-    baseClasses,
-    disabled ? disabledClasses : (outlined ? outlinedClasses : enabledClasses),
-  ];
+  const styles = {
+    backgroundColor: disabled ? '#e5e7eb' : (hovered ? bgHover : bgColor),
+    color: disabled ? '#4b5563' : (hovered ? textHover : textColor),
+    borderColor: disabled ? '#4b5563' : (hovered ? outlineHover : outlineColor),
+  };
 
   return (
     <button
-      className={buttonClasses.filter((cls) => cls !== '').join(' ')}
+      className={baseClasses}
+      style={outlined ? { ...styles, backgroundColor: 'transparent' } : styles}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={(ev: any) => !disabled && !loading && onClick && onClick(ev)}
       disabled={disabled || loading}
     >
-      {loading ? <div className='spinner-xs mr-2'></div> : icon && <span className={`mr-2 ${disabled ? 'text-gray-600' : ''}`}>{icon}</span>}
+       {loading ? <Spinner size="small" className='mr-2' /> : icon && <span className={`mr-2 ${disabled ? 'text-gray-600' : ''}`}>{icon}</span>}
       <span>{children}</span>
     </button>
   );
