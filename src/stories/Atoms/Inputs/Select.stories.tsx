@@ -16,6 +16,8 @@ export default {
     icon: { table: { disable: true } },
     select: { table: { disable: true } },
     appearance: { table: { disable: true } },
+    options: { control: { type: 'object' } },
+    label: { control: { type: 'text' } }, 
   }
 } as Meta;
 
@@ -23,7 +25,13 @@ const Template: StoryFn<typeof Select> = (args) => <Select {...args} />;
 
 export const SelectDefaultValue = Template.bind({});
 SelectDefaultValue.args = {
-  defaultValue: 'Green',
+  label: 'Select a color', 
+  defaultValue: 'Dog',
+  options: [
+    { value: 'Dog', label: 'Dog' },
+    { value: 'Green', label: 'Green' },
+    { value: 'Blue', label: 'Blue' },
+  ],
   icon: "",
   size: "medium"
 };
