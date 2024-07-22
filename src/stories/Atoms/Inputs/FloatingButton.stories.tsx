@@ -11,6 +11,8 @@ export default {
     bgHover: { control: 'color' },
     textColor: { control: 'color' },
     textHover: { control: 'color' },
+    borderColor: { control: 'color' },
+    borderHover: { control: 'color' },
     children: { table: { disable: true } },
     shadow: { control: 'boolean' },
     outlined: { control: 'boolean' },
@@ -26,10 +28,10 @@ const Template: StoryFn<typeof FloatingButton> = (args) => <FloatingButton {...a
 
 export const Normal = Template.bind({});
 Normal.args = {
-  bgColor: 'bg-yellow-500',
-  bgHover: 'hover:bg-yellow-600',
-  textColor: 'text-gray-950',
-  textHover: 'hover:text-gray-950',
+  bgColor: '#eab308',
+  bgHover: '#d97706',
+  textColor: '#fefce8',
+  textHover: '#fef08a',
   disabled: false,
   shadow: true,
   outlined: false,
@@ -39,10 +41,12 @@ Normal.args = {
 
 export const Outlined = Template.bind({});
 Outlined.args = {
-  bgColor: 'bg-white', // Fondo blanco para el outline
-  bgHover: 'hover:bg-yellow-100', // Hover cambia a un amarillo muy claro
-  textColor: 'text-yellow-500', // Texto amarillo 500
-  textHover: 'hover:text-yellow-600', // Hover del texto amarillo 600
+  bgColor: '#eab308',
+  bgHover: '#d97706',
+  textColor: '#fefce8',
+  textHover: '#fef08a',
+  borderColor: '#eab308',
+  borderHover: '#d97706',
   disabled: false,
   shadow: true,
   outlined: true,

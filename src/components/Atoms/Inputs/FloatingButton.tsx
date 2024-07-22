@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -10,21 +10,38 @@ interface ButtonProps {
   shadow: boolean;
   disabled?: boolean;
   outlined?: boolean;
+  borderColor?: string;
+  borderHover?: string;
   onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const FloatingButton: React.FC<ButtonProps> = ({
   children,
   size = 'md',
-  bgColor = 'bg-yellow-500',
-  bgHover = 'hover:bg-yellow-600',
-  textColor = 'text-yellow-500',
-  textHover = 'hover:text-yellow-600',
+  bgColor = '#eab308',
+  bgHover = '#d97706',
+  textColor = '#fefce8',
+  textHover = '#fef08a',
+  borderColor = '#eab308',
+  borderHover = '#d97706', 
   shadow = true,
   outlined = false,
   disabled = false,
   onClick,
-}) => {
+}) => 
+{
+  const [hovered, SetHovered] = useState(false);
+
+  const HandleMouseEnter = () => 
+  {
+    SetHovered(true);
+  };
+
+  const HandleMouseLeave = () => 
+  {
+    SetHovered(false);
+  };
+
   const sizeClasses = {
     sm: 'w-6 h-6 text-xl',
     md: 'w-8 h-8 text-2xl',
@@ -33,20 +50,23 @@ export const FloatingButton: React.FC<ButtonProps> = ({
   };
 
   const disabledClasses = `
-    cursor-not-allowed text-gray-400 bg-gray-100 hover:bg-gray-200 border-gray-200
+    cursor-not-allowed 
+    text-[#4b5563] 
+    bg-[#e5e7eb] 
+    hover:bg-[#d1d5db] 
+    border-[#e5e7eb]
   `;
 
   const outlinedClasses = `
-    ${outlined ? 'bg-white border-2 border-yellow-500' : ''}
-    ${outlined ? 'hover:bg-yellow-100 hover:border-yellow-600' : ''}
+    ${outlined ? `bg-[${bgColor}}]  border-[${borderColor}]` : ''}
+    ${outlined ? `hover:bg-[${bgHover}] hover:border-[${borderHover}]` : ''}
   `;
 
   const baseClasses = `
     ${sizeClasses[size]} 
-    ${disabled ? disabledClasses : `${bgColor} ${bgHover}`}
-    ${disabled ? 'text-gray-400' : `${textColor} ${textHover}`}
     ${shadow ? 'shadow-md' : ''} 
-    ${outlined && !disabled ? outlinedClasses : ''}
+    ${outlined ? "border-2": ''}
+    ${disabled  ? 'cursor-not-allowed' : ''}
     rounded-full 
     transition-all 
     duration-200 
@@ -56,11 +76,20 @@ export const FloatingButton: React.FC<ButtonProps> = ({
     justify-center
   `;
 
+  const styles = {
+    backgroundColor: disabled ? '#e5e7eb' : (hovered ? bgHover : bgColor),
+    color: disabled ? '#4b5563' : (hovered ? textHover : textColor),
+    borderColor: disabled ? '#4b5563' : (hovered ? borderHover : borderColor),
+  };
+
   return (
     <button
       onClick={(ev) => (onClick && !disabled) && onClick(ev)}
       className={baseClasses}
       disabled={disabled}
+      onMouseEnter={HandleMouseEnter}
+      onMouseLeave={HandleMouseLeave}
+      style={styles}
     >
       {children}
     </button>
