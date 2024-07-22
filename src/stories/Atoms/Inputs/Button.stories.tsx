@@ -7,13 +7,14 @@ export default {
   title: 'Atoms/Inputs/Button',
   component: Button,
   argTypes: {
+    children: { table: { disable: true } },
     icon: { table: { disable: true } },
     bgColor: { control: 'color' },
     bgHover: { control: 'color' },
     textColor: { control: 'color' },
     textHover: { control: 'color' },
-    outlineColor: { control: 'color' },
-    outlineHover: { control: 'color' },
+    borderColor: { control: 'color' },
+    borderHover: { control: 'color' },
   },
 } as Meta<typeof Button>;
 
@@ -34,15 +35,15 @@ Normal.args = {
   weight: 'font-semibold',
 };
 
-export const NormalOutlined = Template.bind({});
-NormalOutlined.args = {
+export const Outlined = Template.bind({});
+Outlined.args = {
   label: 'OUTLINED',
   bgColor: '#fefce8',
   bgHover: '#eab308',
   textColor: '#eab308',
   textHover: '#d97706',
-  outlineColor: '#eab308',
-  outlineHover: '#d97706',
+  borderColor: '#eab308',
+  borderHover: '#d97706',
   shadow: true,
   disabled: false,
   loading: false,
@@ -51,8 +52,8 @@ NormalOutlined.args = {
   weight: 'font-semibold',
 };
 
-export const NormalIcon = Template.bind({});
-NormalIcon.args = {
+export const Icon = Template.bind({});
+Icon.args = {
   label: 'ICON',
   bgColor: '#eab308',
   bgHover: '#d97706',
@@ -67,20 +68,28 @@ NormalIcon.args = {
   icon: <MdAdd className='-ml-3 text-xl self-center' />,
 };
 
-export const NormalOutlinedIcon = Template.bind({});
-NormalOutlinedIcon.args = {
-  label: 'OUTLINED ICON',
+export const Floating = Template.bind({});
+Floating.args = {
+  children: <MdAdd />,
+  bgColor: '#eab308',
+  bgHover: '#d97706',
+  textColor: '#fefce8',
+  textHover: '#fef08a',
+  shadow: true,
+  outlined: false,
+  size: 'floating',
+};
+
+export const FloatingOutlined = Template.bind({});
+FloatingOutlined.args = {
+  children: <MdAdd />,
   bgColor: '#fefce8',
   bgHover: '#eab308',
   textColor: '#eab308',
   textHover: '#d97706',
-  outlineColor: '#eab308',
-  outlineHover: '#d97706',
+  borderColor: '#eab308',
+  borderHover: '#d97706',
   shadow: true,
-  disabled: false,
-  loading: false,
   outlined: true,
-  size: 'sm',
-  weight: 'font-semibold',
-  icon: <MdAdd className='-ml-3 text-xl self-center' />,
+  size: 'floating',
 };
