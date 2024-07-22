@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Spinner } from '@fluentui/react-components'; // Importa el Spinner
-
+import { PulseLoader } from 'react-spinners';
 
 interface ButtonProps {
   label: string;
@@ -45,14 +44,16 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   onClick,
 }: ButtonProps) => {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, SetHovered] = useState(false);
 
-  const handleMouseEnter = () => {
-    setHovered(true);
+  const HandleMouseEnter = () => 
+  {
+    SetHovered(true);
   };
 
-  const handleMouseLeave = () => {
-    setHovered(false);
+  const HandleMouseLeave = () => 
+  {
+    SetHovered(false);
   };
 
   const baseClasses = `
@@ -60,7 +61,7 @@ export const Button: React.FC<ButtonProps> = ({
     ${weight}
     ${shadow ? 'shadow-md' : ''}
     ${outlined ? 'border-2' : ''}
-    ${disabled ? 'cursor-not-allowed' : ''}
+    ${disabled || loading ? 'cursor-not-allowed' : ''}
     rounded
     transition-all
     duration-200
@@ -71,22 +72,22 @@ export const Button: React.FC<ButtonProps> = ({
   `;
 
   const styles = {
-    backgroundColor: disabled ? '#e5e7eb' : (hovered ? bgHover : bgColor),
-    color: disabled ? '#4b5563' : (hovered ? textHover : textColor),
-    borderColor: disabled ? '#4b5563' : (hovered ? outlineHover : outlineColor),
+    backgroundColor: disabled || loading ? '#e5e7eb' : (hovered ? bgHover : bgColor),
+    color: disabled || loading ? '#4b5563' : (hovered ? textHover : textColor),
+    borderColor: disabled || loading ? '#4b5563' : (hovered ? outlineHover : outlineColor),
   };
 
   return (
     <button
       className={baseClasses}
-      style={outlined ? { ...styles, backgroundColor: 'transparent' } : styles}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      style={styles}
+      onMouseEnter={HandleMouseEnter}
+      onMouseLeave={HandleMouseLeave}
       onClick={(ev: any) => !disabled && !loading && onClick && onClick(ev)}
       disabled={disabled || loading}
     >
-       {loading ? <Spinner size="small" className='mr-2' /> : icon && <span className={`mr-2 ${disabled ? 'text-gray-600' : ''}`}>{icon}</span>}
-      <span>{children}</span>
+       {loading ? <PulseLoader className='mr-4' size={5} color='#4b5563'/> : icon && <span className={`mr-2}`}>{icon}</span>}
+      <span className='py-1'>{children}</span>
     </button>
   );
 };
