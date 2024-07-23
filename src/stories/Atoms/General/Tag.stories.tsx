@@ -11,4 +11,6 @@ export const Success = (args: TagProps) => <Tag {...args} />;
 
 Success.args = {
   label: 'Cine y Animación Digital',
+  bgColor: "#e11d48",
+  textColor: "#fff1f2",
 };

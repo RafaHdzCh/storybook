@@ -8,17 +8,20 @@ import { Button } from '../Atoms/Inputs/Button'
 /* Icons */
 import { MdExpandLess, MdOutlineModeEditOutline, MdDeleteOutline, MdClear, MdOutlineDone } from 'react-icons/md'
 
-interface ThemeSelectorProps {
+interface ThemeSelectorProps 
+{
   themeMenu?: boolean;
   setThemeMenu?: (action: boolean) => void;
 }
 
-interface ThemeRadioButtonProps {
+interface ThemeRadioButtonProps
+{
   themeName: string;
   colors: string[];
 }
 
-interface CustomThemeRadioButtonProps {
+interface CustomThemeRadioButtonProps 
+{
   theme: any;
   themeName: string;
   colors: string[];
@@ -30,11 +33,13 @@ interface CustomThemeRadioButtonProps {
   setCustomizedThemes: (themes: any) => void;
 }
 
-const ThemeRadioButton = (props: ThemeRadioButtonProps) => {
+const ThemeRadioButton = (props: ThemeRadioButtonProps) => 
+{
   const radioInputRef = useRef<any>()
   const [defaultTheme, setDefaultTheme] = useState(DEFAULT_THEME)
 
-  const onClickHandler = () => {
+  const onClickHandler = () => 
+  {
     const newTheme = props.themeName.toLowerCase()
     applyTheme(newTheme)
     radioInputRef.current.click()
@@ -45,10 +50,14 @@ const ThemeRadioButton = (props: ThemeRadioButtonProps) => {
     localStorage.setItem('themes', JSON.stringify(customThemes))
   }
 
-  useEffect(() => {
-    try {
+  useEffect(() => 
+  {
+    try 
+    {
       if (localStorage.getItem('themes') && JSON.parse(localStorage.getItem('themes') ?? '')?.filter((item: any) => item.selected === true).length > 0) return
-    } catch (error) {
+    } 
+    catch (error) 
+    {
       return
     }
     setDefaultTheme(localStorage?.getItem('theme') ?? defaultTheme)
@@ -72,7 +81,8 @@ const ThemeRadioButton = (props: ThemeRadioButtonProps) => {
   </div>
 }
 
-const CustomThemeRadioButton = (props: CustomThemeRadioButtonProps) => {
+const CustomThemeRadioButton = (props: CustomThemeRadioButtonProps) => 
+{
   const { index, theme, selected, setCustomizedThemes, themeName, colors, toggleCustomThemeMenu, onClick } = props
 
   const radioInputRef = useRef<any>()
@@ -80,7 +90,8 @@ const CustomThemeRadioButton = (props: CustomThemeRadioButtonProps) => {
   const [hover, setHover] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
 
-  const onClickHandler = () => {
+  const onClickHandler = () => 
+  {
     applyTheme({ ...theme })
     radioInputRef.current.click()
     radioInputRef.current.checked = true
@@ -89,15 +100,18 @@ const CustomThemeRadioButton = (props: CustomThemeRadioButtonProps) => {
     localStorage.setItem('themes', JSON.stringify(customThemes))
   }
 
-  const deleteTheme = () => {
+  const deleteTheme = () =>
+  {
     const customThemes = JSON.parse(localStorage.getItem('themes') ?? '[]').filter((theme: any, i: number) => i !== index)
     setCustomizedThemes(customThemes)
     localStorage.setItem('themes', JSON.stringify(customThemes))
     applyTheme(localStorage.getItem('theme') ?? 'base')
   }
 
-  useEffect(() => {
-    if (theme.selected) {
+  useEffect(() => 
+  {
+    if (theme.selected) 
+    {
       applyTheme({ ...theme })
     }
   }, [defaultTheme, themeName, theme])
@@ -142,9 +156,9 @@ const CustomThemeRadioButton = (props: CustomThemeRadioButtonProps) => {
   </div>
 }
 
-export const ThemeSelector: React.FC<ThemeSelectorProps> = (props) => {
+export const ThemeSelector: React.FC<ThemeSelectorProps> = (props) => 
+{
   const { themeMenu, setThemeMenu } = props
-
   const [toggleCustomTheme, setToggleCustomTheme] = useState(false)
   const [inputColorPalette, setInputColorPalette] = useState<any>(CURRENT_THEME)
   const [customizedThemes, setCustomizedThemes] = useState([])
@@ -155,14 +169,18 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = (props) => {
     setToggleCustomTheme(false)
     applyTheme({ ...inputColorPalette })
     let customThemes: any
-    try {
+    try 
+    {
       customThemes = JSON.parse(localStorage.getItem('themes') ?? '[]')
-    } catch (error) {
+    } 
+    catch (error) 
+    {
       localStorage.setItem('themes', '[]')
       customThemes = []
     }
 
-    if (editMode.mode) {
+    if (editMode.mode) 
+    {
       customThemes[editMode.editId] = { ...inputColorPalette }
       localStorage.setItem('themes', JSON.stringify(customThemes))
       setEditMode({ mode: false, editId: 0 })
@@ -175,13 +193,15 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = (props) => {
     setCustomizedThemes(customThemes)
   }
 
-  const toggleCustomThemeMenu = (index: number | null = null) => {
+  const toggleCustomThemeMenu = (index: number | null = null) => 
+  {
     setInputColorPalette(index !== null ? customizedThemes[index] : CURRENT_THEME)
     setToggleCustomTheme(true)
     addOpenWindow([...openWindows, (action: boolean) => setToggleCustomTheme(action)])
   }
 
-  useEffect(() => {
+  useEffect(() => 
+  {
     document.addEventListener('click', (ev: any) => {
       if (ev?.target?.closest('#themes') || ev?.target?.id === 'themesButton') return
       setThemeMenu && setThemeMenu(false)
@@ -195,9 +215,12 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = (props) => {
         setThemeMenu(false)
       } */
     })
-    try {
+    try 
+    {
       setCustomizedThemes(JSON.parse(localStorage.getItem('themes') ?? '[]'))
-    } catch (error) {
+    } 
+    catch (error) 
+    {
       localStorage.setItem('themes', '[]')
       setCustomizedThemes([])
     }
