@@ -93,3 +93,47 @@ FloatingOutlined.args = {
   outlined: true,
   size: 'floating',
 };
+
+export const ButtonVariants = 
+{
+  success: 
+  {
+    label: 'CONFIRM',
+    bgColor: '#10b981',
+    bgHover: '#059669',
+    textColor: '#ffffff',
+    textHover: '#d1fae5',
+    borderColor: '#10b981',
+    borderHover: '#059669',
+  },
+  warning: 
+  {
+    label: 'CONFIRM',
+    bgColor: '#f59e0b',
+    bgHover: '#d97706',
+    textColor: '#ffffff',
+    textHover: '#fef3c7',
+    borderColor: '#f59e0b',
+    borderHover: '#d97706',
+  },
+  danger: 
+  {
+    label: 'CONFIRM',
+    bgColor: '#ef4444',
+    bgHover: '#dc2626',
+    textColor: '#ffffff',
+    textHover: '#fee2e2',
+    borderColor: '#ef4444',
+    borderHover: '#dc2626',
+  },
+  default: 
+  {
+    label: 'CANCEL',
+    bgColor: '#e5e7eb',
+    bgHover: '#d1d5db',
+    textColor: '#000000',
+    textHover: '#374151',
+    borderColor: '#e5e7eb',
+    borderHover: '#d1d5db',
+  }
+};
