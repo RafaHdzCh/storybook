@@ -7,9 +7,9 @@ export default {
   component: Tag,
 } as Meta<typeof Tag>;
 
-export const Success = (args: TagProps) => <Tag {...args} />;
+export const ColorTag = (args: TagProps) => <Tag {...args} />;
 
-Success.args = {
+ColorTag.args = {
   label: 'Cine y Animación Digital',
   bgColor: "#e11d48",
   textColor: "#fff1f2",
