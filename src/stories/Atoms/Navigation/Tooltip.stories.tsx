@@ -1,15 +1,13 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 import { Tooltip } from '../../../components/Atoms/Navigation/Tooltip'
-import { Button } from '../../../components/Atoms/Inputs/Button'
+
 
 export default {
   title: 'Atoms/Navigation/Tooltip',
   component: Tooltip
 } as Meta<typeof Tooltip>
-const Template: StoryFn<typeof Tooltip> = (args) => <Tooltip {...args}>
-    <Button label='Hover Me'/>
-</Tooltip>
+const Template: StoryFn<typeof Tooltip> = (args) => <Tooltip {...args} />
 
 export const Top = Template.bind({})
 Top.args = {

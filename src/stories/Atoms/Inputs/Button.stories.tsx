@@ -135,5 +135,15 @@ export const ButtonVariants =
     textHover: '#374151',
     borderColor: '#e5e7eb',
     borderHover: '#d1d5db',
+  },
+  info: 
+  {
+    label: "INFO",
+    bgColor: "#e3f2fd",        
+    bgHover: "#bbdefb",        
+    textColor: "#0d47a1",      
+    textHover: "#0d47a1",     
+    borderColor: "#bbdefb",    
+    borderHover: "#90caf9"     
   }
 };

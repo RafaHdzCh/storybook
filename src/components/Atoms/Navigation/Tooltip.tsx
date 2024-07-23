@@ -1,12 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Button } from '../../../components/Atoms/Inputs/Button'
+import { ButtonVariants } from '../../../stories/Atoms/Inputs/Button.stories';
 
 interface TooltipProps {
     text: string;
-    children: React.ReactElement;
     orientation: 'top' | 'left' | 'right' | 'bottom';
 }
 
-export const Tooltip = ({ text, children, orientation = 'top' }: TooltipProps) => {
+let infoButtonProps = ButtonVariants.info;
+
+export const Tooltip = (
+  { 
+    text, 
+    orientation = 'top' 
+  }: TooltipProps) => 
+{
   const [tooltipState, toggleTooltip] = useState(false)
   const [height, changeHeight] = useState<number>()
   const [childrenHeight, changeChildrenHeight] = useState<number>()
@@ -24,6 +32,23 @@ export const Tooltip = ({ text, children, orientation = 'top' }: TooltipProps) =
   }, []);
 
   let styles = {}
+  const popUpStyle = `
+    ${tooltipState ? 'visible opacity-100' : 'opacity-0 invisible'} 
+    absolute 
+    poppins 
+    text-[13px] 
+    z-depth-1 
+    text-white 
+    bg-gray-700 
+    px-2 
+    py-2 
+    max-w-[250px] 
+    transition-[all] 
+    ease-out 
+    duration-200 
+    delay-100 
+    rounded
+    `
 
   const center = Math.floor((childrenRef?.current?.offsetHeight - tooltipRef?.current?.children[0]?.offsetHeight) / 2)
 
@@ -48,14 +73,19 @@ export const Tooltip = ({ text, children, orientation = 'top' }: TooltipProps) =
 
   return (
     <div ref={tooltipRef} className='relative'>
-        {
-            <span style={styles} className={`${tooltipState ? 'visible opacity-100' : 'opacity-0 invisible'} absolute poppins text-[13px] z-depth-1 text-white bg-gray-700 px-2 py-2 max-w-[250px] transition-[all] ease-out duration-200 delay-100 rounded`}>
-                {text}
-            </span>
-        }
-        <div onMouseEnter={() => toggleTooltip(true)} onMouseLeave={() => toggleTooltip(false)} ref={childrenRef} className='max-w-max'>
-            {children}
-        </div>
+    {
+      <span style={styles} className={popUpStyle}>
+        {text}
+      </span>
+    }
+    <div 
+      onMouseEnter={() => toggleTooltip(true)} 
+      onMouseLeave={() => toggleTooltip(false)} 
+      ref={childrenRef} 
+      className='max-w-max'
+    >
+      <Button {...infoButtonProps}/>
     </div>
+  </div>
   )
 }
