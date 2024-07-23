@@ -4,7 +4,7 @@ import { MdWarningAmber, MdDoneOutline, MdErrorOutline, MdOutlineDangerous } fro
 interface AlertProps {
   title: string;
   type: 'success' | 'warning' | 'danger' | 'info';
-  text: string | React.ReactFragment;
+  text: string | Iterable<React.ReactNode>;
 }
 
 export const Alert = ({ type, text, title }: AlertProps) => {
