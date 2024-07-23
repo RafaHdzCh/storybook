@@ -48,20 +48,22 @@ const Tab = ({
   );
 };
 
-export const SwitchButton = (
-  {
-    links,
-    select = 0,
-    bgColor = "#d9f99d",
-    textColor = "#65a30d",
-    bgActiveColor = "#a5f3fc",
-    textActiveColor = "#0891b2",
+export const SwitchButton = ({
+  links,
+  select = 0,
+  bgColor = "#d9f99d",
+  textColor = "#65a30d",
+  bgActiveColor = "#a5f3fc",
+  textActiveColor = "#0891b2",
 }: DualTabProps) => {
   const [activeIndex, setActiveIndex] = useState(select);
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>, index: number) => {
     setActiveIndex(index);
-    links[index]?.onClick && links[index].onClick(event);
+    const onClickHandler = links[index]?.onClick;
+    if (onClickHandler) {
+      onClickHandler(event);
+    }
   };
 
   return (
