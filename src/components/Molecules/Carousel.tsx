@@ -7,9 +7,10 @@ interface CarouselProps {
   width: string;
   timer?: number;
   dotColor: string;
+  bgColor: string;
 }
 
-export const Carousel: React.FC<CarouselProps> = ({ children, width, height, timer, dotColor}) => 
+export const Carousel: React.FC<CarouselProps> = ({ children, width="75vw", height="30vw", timer, dotColor="#374151", bgColor="#e5e7eb"}) => 
 {
   const [countPages, setCount] = useState<number>(children.length);
   const [currentPage, setPage] = useState<number>(1);
@@ -105,7 +106,7 @@ export const Carousel: React.FC<CarouselProps> = ({ children, width, height, tim
 
   return (
     <div className='overflow-hidden rounded bg-gray-300/25 relative' style={{ height, width: width }}>
-      <div ref={contentRef} style={{ transform: `translateX(-${carouselWidth * (currentPage - 1)}px)` }} className='transition ease-out duration-500 flex absolute flex-nowrap'>
+      <div ref={contentRef} style={{ transform: `translateX(-${carouselWidth * (currentPage - 1)}px)`, backgroundColor: bgColor }} className='transition ease-out duration-500 flex absolute flex-nowrap'>
         {children}
       </div>
       <div style={{ width }} className='absolute bottom-4 flex justify-center space-x-3'>
