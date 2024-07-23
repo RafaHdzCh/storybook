@@ -55,3 +55,9 @@ ManualSlide.args = {
     </section>,
   ],
 };
+
+ManualSlide.parameters = {
+  controls: {
+    exclude: ['timer'],
+  },
+};
