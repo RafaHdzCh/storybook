@@ -1,5 +1,3 @@
-// src/components/Spinner/Spinner.stories.tsx
-
 import * as React from 'react';
 import { Spinner } from '@fluentui/react-components';
 import type { SpinnerProps } from '@fluentui/react-components';
