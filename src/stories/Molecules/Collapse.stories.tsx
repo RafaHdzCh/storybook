@@ -5,6 +5,10 @@ import { Collapse } from '../../components/Molecules/Collapse'
 export default {
   title: 'Molecules/Collapse',
   component: Collapse,
+  argTypes: 
+  {
+    children: { table: { disable: true } },
+  },
   decorators: [
     (Story) => <div style={ {maxWidth: '600px'} }>
       {Story()}
@@ -17,6 +21,7 @@ const Template: StoryFn<typeof Collapse> = (args) => <Collapse {...args} />
 export const Sample = Template.bind({})
 Sample.args = {
     label: 'Collapse sample',
+    color: "#14b8a6",
     children: 
     <React.Fragment>
       <h1 className='text-xl mb-2'>Title</h1>
