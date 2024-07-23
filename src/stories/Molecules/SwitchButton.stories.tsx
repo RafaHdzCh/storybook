@@ -10,6 +10,10 @@ const Template: StoryFn<typeof SwitchButton> = (args) => <SwitchButton {...args}
 
 export const Normal = Template.bind({})
 Normal.args = {
+    bgColor: "#d9f99d",
+    textColor: "#65a30d",
+    bgActiveColor: "#a5f3fc",
+    textActiveColor: "#0891b2",
     links: [
         {
             label: 'Público',
@@ -22,7 +26,7 @@ Normal.args = {
         {
             label: 'Oculto',
             onClick: (ev) => console.log(ev)
-        }
+        },
     ],
     select: 0
 }

@@ -1,70 +1,100 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState } from 'react';
 
 interface Link {
   label: string;
-  onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (ev: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 interface DualTabProps {
+  bgColor: string;
+  textColor: string;
+  bgActiveColor: string;
+  textActiveColor: string;
   links: Link[];
   select?: number;
 }
 
-const Tab = ( {button, style, onClick}: any) => {
-    return <div id='tab' onClick={(ev) => onClick(ev)} style={style} className={`cursor-pointer bg-stone-200 hover:bg-stone-300 py-2 px-6`}>
-        {button.label}
+const Tab = ({
+  button,
+  style,
+  onClick,
+  isActive,
+  bgColor,
+  bgActiveColor,
+  textColor,
+  textActiveColor,
+}: {
+  button: Link;
+  style?: React.CSSProperties;
+  onClick: (ev: React.MouseEvent<HTMLDivElement>) => void;
+  isActive: boolean;
+  bgColor: string;
+  bgActiveColor: string;
+  textColor: string;
+  textActiveColor: string;
+}) => {
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        ...style,
+        backgroundColor: isActive ? bgActiveColor : bgColor,
+        color: isActive ? textActiveColor : textColor,
+      }}
+      className='cursor-pointer py-2 px-6'
+    >
+      {button.label}
     </div>
-}
+  );
+};
 
-export const SwitchButton = ( {links, select}: DualTabProps) => {
+export const SwitchButton = (
+  {
+    links,
+    select = 0,
+    bgColor = "#d9f99d",
+    textColor = "#65a30d",
+    bgActiveColor = "#a5f3fc",
+    textActiveColor = "#0891b2",
+}: DualTabProps) => {
+  const [activeIndex, setActiveIndex] = useState(select);
 
-  const tabsRef = useRef<any>(true)
-
-  useEffect(() => {
-    if(typeof select !== 'undefined' && (select <= links.length - 1 && select >= 0)) {
-      const tabs = tabsRef?.current?.querySelectorAll("#tab");
-      console.log(tabs[select]);
-      tabs[select].classList.add('bg-blue-500');
-      tabs[select].classList.add('text-white');
-      tabs[select].classList.remove('hover:bg-stone-300');
-    }
-  }, [links.length, select])
-
-  const activeTab = (event: any, index: number) => {
-    const tabs = tabsRef.current.querySelectorAll("#tab");
-    for (const tab of tabs) {
-      tab.classList.remove('bg-blue-500')
-      tab.classList.remove('text-white');
-      tab.classList.add('bg-stone-200')
-      tab.classList.add('hover:bg-stone-300');
-    }
-    event.target.closest('#tab').classList.add('bg-blue-500');
-    event.target.closest('#tab').classList.add('text-white');
-    event.target.closest('#tab').classList.remove('hover:bg-stone-300');
-  }
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>, index: number) => {
+    setActiveIndex(index);
+    links[index]?.onClick && links[index].onClick(event);
+  };
 
   return (
-    <div ref={tabsRef} className='flex'>
-      {
-        links.map((link: Link, index: number) => 
-          {
-            let style
-            if(index === 0){
-              style = {
-                borderTopLeftRadius:  '2rem',
-                borderBottomLeftRadius: '2rem'
-              }
-            }
-            if(index === links.length - 1) {
-              style = {
-                borderTopRightRadius:  '2rem',
-                borderBottomRightRadius: '2rem'
-              }
-            }
-            return <Tab onClick={(ev: React.MouseEvent<HTMLButtonElement>) => { activeTab(ev, index); link?.onClick && link.onClick(ev) }} style={style} button={link} />
-          }
-        )
-      }
+    <div className='flex'>
+      {links.map((link: Link, index: number) => {
+        let style: React.CSSProperties = {};
+        if (index === 0) {
+          style = {
+            borderTopLeftRadius: '2rem',
+            borderBottomLeftRadius: '2rem',
+          };
+        }
+        if (index === links.length - 1) {
+          style = {
+            ...style,
+            borderTopRightRadius: '2rem',
+            borderBottomRightRadius: '2rem',
+          };
+        }
+        return (
+          <Tab
+            key={index}
+            onClick={(ev: React.MouseEvent<HTMLDivElement>) => handleClick(ev, index)}
+            style={style}
+            button={link}
+            isActive={index === activeIndex}
+            bgColor={bgColor}
+            bgActiveColor={bgActiveColor}
+            textColor={textColor}
+            textActiveColor={textActiveColor}
+          />
+        );
+      })}
     </div>
-  )
-}
+  );
+};
