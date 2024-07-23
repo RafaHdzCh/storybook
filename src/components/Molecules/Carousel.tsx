@@ -2,14 +2,16 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MdArrowForwardIos } from 'react-icons/md';
 
 interface CarouselProps {
-  children: React.ReactNode[]; // Cambia aquí para aceptar un array de nodos
+  children: React.ReactNode[]; 
   height: string;
   width: string;
   timer?: number;
+  dotColor: string;
 }
 
-export const Carousel: React.FC<CarouselProps> = ({ children, width, height, timer }) => {
-  const [countPages, setCount] = useState<number>(children.length); // Inicializa con la longitud de los hijos
+export const Carousel: React.FC<CarouselProps> = ({ children, width, height, timer, dotColor}) => 
+{
+  const [countPages, setCount] = useState<number>(children.length);
   const [currentPage, setPage] = useState<number>(1);
   const [carouselWidth, setWidth] = useState<number>(1);
   const [interval, setTimer] = useState<any>(timer ? () => {
@@ -74,15 +76,15 @@ export const Carousel: React.FC<CarouselProps> = ({ children, width, height, tim
       }
       setCount(childrenContent.length);
     }
-  }, [height, width, children]); // Agrega children a las dependencias
+  }, [height, width, children]);
 
-  const renderDots = (currentPage: number) => {
+  const renderDots = (currentPage: number, dotColor: string) => {
     let dots: React.ReactNode[] = [];
     let styles;
     for (let i = 1; i <= countPages; i++) {
       if (currentPage === i) {
         styles = {
-          backgroundColor: 'orange',
+          backgroundColor: dotColor,
         };
       } else {
         styles = {
@@ -91,7 +93,7 @@ export const Carousel: React.FC<CarouselProps> = ({ children, width, height, tim
       }
       dots.push(
         <div
-          key={i} // Agrega una clave única para cada dot
+          key={i} 
           style={styles}
           onClick={() => jumpToPage(i)}
           className='text-center ease-out duration-100 rounded-full h-3 w-3 hover:bg-white hover:opacity-100 cursor-pointer'
@@ -107,7 +109,7 @@ export const Carousel: React.FC<CarouselProps> = ({ children, width, height, tim
         {children}
       </div>
       <div style={{ width }} className='absolute bottom-4 flex justify-center space-x-3'>
-        {renderDots(currentPage)}
+        {renderDots(currentPage, dotColor)}
       </div>
       <div className='text-3xl text-gray-400'>
         <MdArrowForwardIos onClick={() => moveBackward()} className='ml-4 absolute cursor-pointer h-full hover:text-gray-500 inset-y-0 left-0 rotate-180' />
