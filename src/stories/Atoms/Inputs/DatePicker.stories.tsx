@@ -1,19 +1,17 @@
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
-import { Default } from "../../../components/Atoms/Inputs/DatePicker"
+import DatePicker from "../../../components/Atoms/Inputs/DatePicker"
 
 export default {
   title: 'Atoms/Inputs/DatePicker',
-  component: Default
+  component: DatePicker
 } as Meta;
 
-const Template: StoryFn<typeof Default> = (args) => <Default {...args} />;
+const Template: StoryFn<typeof DatePicker> = (args) => <DatePicker />;
 
 
-export const DefaultDatePicker = Template.bind({});
-DefaultDatePicker.args = {};
+export const DayPicker = Template.bind({});
+DayPicker.args = 
+{
 
-export const DisabledDatePicker = Template.bind({});
-DisabledDatePicker.args = {
-  disabled: true,
 };

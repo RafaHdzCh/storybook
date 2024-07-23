@@ -1,17 +1,19 @@
-import React from "react";
-import { DatePicker, DatePickerProps } from "@fluentui/react-datepicker-compat";
-import { Field } from "@fluentui/react-components";
+import React, { useState } from "react";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/style.css";
 
-interface DefaultProps extends Partial<DatePickerProps> {}
+export default function DatePicker() 
+{
+  const [selected, setSelected] = useState<Date>();
 
-export const Default: React.FC<DefaultProps> = (props) => {
   return (
-    <Field label="Select a date">
-      <DatePicker
-        className="max-w-[300px]"
-        placeholder="Select a date..."
-        {...props}
-      />
-    </Field>
+    <DayPicker
+      mode="single"
+      selected={selected}
+      onSelect={setSelected}
+      footer={
+        selected ? `Selected: ${selected.toLocaleDateString()}` : "Pick a day."
+      }
+    />
   );
-};
+}
