@@ -21,7 +21,8 @@ const Template: StoryFn<typeof Collapse> = (args) => <Collapse {...args} />
 export const Sample = Template.bind({})
 Sample.args = {
     label: 'Collapse sample',
-    color: "#14b8a6",
+    titleColor: "#14b8a6",
+    childrenColor: "#99f6e4",
     children: 
     <React.Fragment>
       <h1 className='text-xl mb-2'>Title</h1>

@@ -4,10 +4,11 @@ import { MdArrowForwardIos } from 'react-icons/md'
 interface CollapseProps {
     label: string;
     children: any;
-    color: string;
+    titleColor: string;
+    childrenColor: string;
 }
 
-export const Collapse = ( {label, children, color}: CollapseProps) => {
+export const Collapse = ( {label, children, titleColor, childrenColor}: CollapseProps) => {
 
   const [collapseState, toggleCollapse] = useState(false)
   const [collapseHeight, changeHeight] = useState<number>()
@@ -21,7 +22,7 @@ export const Collapse = ( {label, children, color}: CollapseProps) => {
     <div className='shadow-md rounded-b'>
       <div 
       onClick={() => toggleCollapse(!collapseState)} 
-      style={{backgroundColor: color}} 
+      style={{backgroundColor: titleColor}} 
       className={`flex cursor-pointer justify-between rounded relative z-10 shadow px-4 py-3`}>
           <h1 className='text-xl text-gray-800'>
               {label}
@@ -32,7 +33,7 @@ export const Collapse = ( {label, children, color}: CollapseProps) => {
       ref={collapse} 
       style={ {height: collapseState ? collapseHeight + 'px'  : '0px'} } 
       className={`h-full ease-out duration-200 transition-[height] overflow-hidden`}>
-          <div className='p-4 bg-gray-100'>
+          <div className='p-4' style={{backgroundColor: childrenColor}} >
               {children}
           </div>
       </div>
