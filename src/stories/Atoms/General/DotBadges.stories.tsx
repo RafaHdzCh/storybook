@@ -16,5 +16,5 @@ const Template: StoryFn<DotBadgesProps> = (args: DotBadgesProps) => <DotBadges {
 export const Normal = Template.bind({});
 Normal.args = {
   label: 'UNIAT Guadalajara',
-  color: 'rgb(244, 63, 94)',
+  color: '#f43f5e',
 };
