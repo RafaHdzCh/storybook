@@ -21,7 +21,6 @@ export const SweetAlert: React.FC<SweetAlertProps> = ({ show, type, onConfirm, o
 
   let icon;
   let confirmButtonProps = ButtonVariants.secondary;
-  let buttonLabel;
 
   switch (type) {
     case 'success':
