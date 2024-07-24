@@ -1,31 +1,33 @@
-import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
-import { Tabs } from '../../components/Molecules/Tabs'
+import React from 'react';
+import { StoryFn, Meta } from '@storybook/react';
+import { Tabss } from '../../components/Molecules/Tabs';
 
 export default {
   title: 'Molecules/Tabs',
-  component: Tabs,
+  component: Tabss,
   decorators: [
-    (Story) => <div style={ { maxWidth: '600px' } }>
-      {Story()}
-    </div>
+    (Story) => <div style={{ maxWidth: '600px' }}>{Story()}</div>
   ]
-} as Meta<typeof Tabs>
+} as Meta<typeof Tabss>;
 
-const Template: StoryFn<typeof Tabs> = (args) => <Tabs {...args} />
+const Template: StoryFn<typeof Tabss> = (args) => <Tabss {...args} />;
 
-export const Sample = Template.bind({})
-Sample.args = {
-  tabs: ['TAB 1', 'TAB 2', 'TAB 3', 'TAB 4', 'TAB 5', 'TAB 6', 'TAB 7', 'TAB 8', 'TAB 9', 'TAB 10'],
-  color: 'blue', // Asegúrate de proporcionar un color o elimina esta propiedad si no es necesaria.
-  selected: 0,
-  children: (
-    <React.Fragment>
-      <section>
-        <h1 className='text-xl'>Tab 1 Section</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum culpa repellendus quod, iure nihil saepe, vero dicta dolor laboriosam a quia voluptatem eveniet aspernatur ipsa voluptatibus harum et porro rerum?</p>
-      </section>
-      {/* Agrega más secciones según sea necesario */}
-    </React.Fragment>
-  ),
-}
+export const Sample = Template.bind({});
+Sample.args = 
+{
+  tabTitles: 
+  ["First Tab", "Second Tab","Third Tab"],
+  tabContents: 
+  [
+    "This is the content for the first tab. It contains detailed information relevant to this tab.",
+    "This is the content for the second tab. It provides insights and data for the second tab.",
+    "This is the content for the third tab. It provides useful information for the third tab about the two previous tabs."
+  ],
+  tabBgColor: "#bbf7d0",
+  tabTextColor: "#15803d",
+  tabBgActiveColor: "#a5f3fc",
+  tabTextActiveColor: "#0e7490",
+  tabContentBgColor: "#fef3c7",
+  tabContentTextColor: "#b45309",
+  borderColor: "#15803d",
+};

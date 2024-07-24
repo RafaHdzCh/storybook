@@ -1,92 +1,72 @@
-import React, { useEffect, useRef, useState, ReactNode } from 'react'
-import { MdArrowBackIos } from 'react-icons/md'
+import React, { useState } from 'react';
+import 'react-tabs/style/react-tabs.css';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-interface TabsProps {
-    tabs: string[];
-    children: ReactNode;
-    color: string;
-    selected: number;
+interface TabsProps 
+{
+  tabTitles: string[];
+  tabContents: string[];
+  tabBgColor: string;
+  tabTextColor: string;
+  tabBgActiveColor: string;
+  tabTextActiveColor: string;
+  tabContentBgColor: string;
+  tabContentTextColor: string;
+  borderColor: string;
 }
 
-export const Tabs = ({ tabs, children, color, selected }: TabsProps) => {
-  const tabsRef = useRef<HTMLDivElement | null>(null)
-  const childrenRef = useRef<HTMLDivElement | null>(null)
-
-  const [arrows, showArrows] = useState(false)
-  const [scroll, changeScroll] = useState(0)
-
-  useEffect(() => {
-    const sections = document.getElementsByTagName('section')
-    for (const section of sections) {
-      section.classList.add('hidden')
-    }
-    if (sections[selected]) {
-      sections[selected].classList.remove('hidden')
-    }
-
-    if (tabsRef.current && childrenRef.current) {
-      const tabsWidth = tabsRef.current.children[0] ? (tabsRef.current.children[0] as HTMLDivElement).offsetWidth : 0
-      if (tabsWidth > childrenRef.current.offsetWidth) {
-        showArrows(true)
-      } else {
-        showArrows(false)
-      }
-    }
-  }, [selected])
-
-  const activeTab = (event: React.MouseEvent<HTMLDivElement>, index: number) => {
-    const tabs = tabsRef.current?.querySelectorAll('#tab') || []
-    tabs.forEach(tab => (tab as HTMLDivElement).classList.remove('active-tab'))
-    const clickedTab = event.currentTarget;
-    clickedTab.classList.add('active-tab')
-    const sections = childrenRef.current?.getElementsByTagName('section') || []
-    Array.from(sections).forEach(section => section.classList.add('hidden'))
-    sections[index]?.classList.remove('hidden')
+export const Tabss: React.FC<TabsProps> = (
+  {
+    tabTitles = ["Title 1", "Title 2"],
+    tabContents = [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+    ],
+    tabBgColor = "#bbf7d0",
+    tabTextColor = "#15803d",
+    tabBgActiveColor = "#a5f3fc",
+    tabTextActiveColor = "#0e7490",
+    tabContentBgColor = "#fef3c7",
+    tabContentTextColor = "#b45309",
+    borderColor = "#15803d",
   }
+) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const scrollLeft = () => {
-    if (tabsRef.current) {
-      tabsRef.current.scrollLeft -= tabsRef.current.offsetWidth
-      changeScroll(tabsRef.current.scrollLeft)
-    }
-  }
+  const handleSelect = (index: number) => 
+  {
+    setSelectedIndex(index);
+  };
 
-  const scrollRight = () => {
-    if (tabsRef.current) {
-      tabsRef.current.scrollLeft += tabsRef.current.offsetWidth
-      changeScroll(tabsRef.current.scrollLeft)
-    }
-  }
+  const getTabStyles = (index: number) => (
+  {
+    backgroundColor: index === selectedIndex ? tabBgActiveColor : tabBgColor,
+    color: index === selectedIndex ? tabTextActiveColor : tabTextColor,
+    borderColor: borderColor,
+  });
+
+  const contentStyles = 
+  {
+    backgroundColor: tabContentBgColor,
+    color: tabContentTextColor,
+  };
 
   return (
-    <div className='relative'>
-      {arrows && scroll !== 0 &&
-        <div onClick={scrollLeft} className='overflow-hidden absolute h-10 pl-1 -mr-1 flex inset-y-0 left-0 z-20 opacity-25 hover:opacity-75 cursor-pointer'>
-          <MdArrowBackIos className='text-2xl self-center'/>
-        </div>
-      }
-      {arrows && tabsRef.current && scroll < (tabsRef.current.children[0] as HTMLDivElement).offsetWidth - tabsRef.current.offsetWidth &&
-        <div onClick={scrollRight} className='overflow-hidden absolute h-10 pr-1 -ml-1 flex inset-y-0 right-0 z-20 opacity-25 hover:opacity-75 cursor-pointer'>
-          <MdArrowBackIos className='text-2xl rotate-180 self-center'/>
-        </div>
-      }
-      <nav className='overflow-hidden transition-[all] ease-out duration-100' ref={tabsRef}>
-        <div className='flex w-max'>
-          {tabs.map((tab, index) =>
-            <div
-              id='tab'
-              onClick={(event) => activeTab(event, index)}
-              className={`${index === selected ? 'active-tab' : ''} tab`}
-              key={index}
-            >
-              {tab}
-            </div>
-          )}
-        </div>
-      </nav>
-      <div ref={childrenRef} className='w-fill z-10 relative p-6 bg-white shadow-md rounded-b-md'>
-        {children}
-      </div>
-    </div>
-  )
-}
+    <Tabs onSelect={handleSelect} selectedIndex={selectedIndex}>
+      <TabList>
+        {
+        tabTitles.map((title, index) => (
+          <Tab key={index} style={getTabStyles(index)}>
+            {title}
+          </Tab>
+        ))}
+      </TabList>
+      {
+        tabContents.map((content, index) => (
+          <TabPanel key={index} style={contentStyles}>
+            <h2>{content}</h2>
+          </TabPanel>
+      ))}
+    </Tabs>
+  );
+};
