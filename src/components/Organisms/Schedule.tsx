@@ -66,7 +66,7 @@ export const Schedule: React.FC<ScheduleProps> = ({ data }) => {
 
   return (
     <div>
-      <Modal toggle={modal} width='600px' onDimiss={() => setModal(false)} title='Información de la clase'>
+      <Modal bgColor='#f3f4f6' textColor='#111827' toggle={modal} width='600px' onDimiss={() => setModal(false)} title='Información de la clase'>
 
         <p><b>ID: </b>{data.id}</p>
         <p><b>Profesor: </b>{data.teacher}</p>
