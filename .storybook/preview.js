@@ -1,7 +1,11 @@
 import "../src/index.css";
+import { themes } from '@storybook/theming';
 
 const preview = {
   parameters: {
+    docs: {
+      theme: themes.dark,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
