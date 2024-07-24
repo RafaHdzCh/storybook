@@ -19,4 +19,5 @@ Bar.args = {
   color: '#075985',
   width: 200,
   height: 8,
+  rounded: true,
 };
