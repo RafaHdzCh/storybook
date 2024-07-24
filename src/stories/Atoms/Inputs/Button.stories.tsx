@@ -98,7 +98,6 @@ export const ButtonVariants =
 {
   success: 
   {
-    label: 'CONFIRM',
     bgColor: '#10b981',
     bgHover: '#059669',
     textColor: '#ffffff',
@@ -108,7 +107,6 @@ export const ButtonVariants =
   },
   warning: 
   {
-    label: 'CONFIRM',
     bgColor: '#f59e0b',
     bgHover: '#d97706',
     textColor: '#ffffff',
@@ -118,7 +116,6 @@ export const ButtonVariants =
   },
   danger: 
   {
-    label: 'CONFIRM',
     bgColor: '#ef4444',
     bgHover: '#dc2626',
     textColor: '#ffffff',
@@ -126,9 +123,8 @@ export const ButtonVariants =
     borderColor: '#ef4444',
     borderHover: '#dc2626',
   },
-  default: 
+  secondary: 
   {
-    label: 'CANCEL',
     bgColor: '#e5e7eb',
     bgHover: '#d1d5db',
     textColor: '#000000',
@@ -138,7 +134,6 @@ export const ButtonVariants =
   },
   info: 
   {
-    label: "INFO",
     bgColor: "#e3f2fd",        
     bgHover: "#bbdefb",        
     textColor: "#0d47a1",      

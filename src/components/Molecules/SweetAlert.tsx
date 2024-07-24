@@ -20,7 +20,8 @@ export const SweetAlert: React.FC<SweetAlertProps> = ({ show, type, onConfirm, o
   }, [show]);
 
   let icon;
-  let confirmButtonProps = ButtonVariants.default;
+  let confirmButtonProps = ButtonVariants.secondary;
+  let buttonLabel;
 
   switch (type) {
     case 'success':
@@ -60,8 +61,8 @@ export const SweetAlert: React.FC<SweetAlertProps> = ({ show, type, onConfirm, o
           <h1 className='font-medium text-3xl py-2'>{label}</h1>
           <p className='text-xl py-2'>{text}</p>
           <div className='flex justify-center space-x-8 py-4'>
-            <Button {...confirmButtonProps} onClick={onConfirmHandler} />
-            <Button {...ButtonVariants.default} onClick={onCancelHandler} />
+            <Button {...confirmButtonProps} label="Continue" onClick={onConfirmHandler} />
+            <Button {...ButtonVariants.secondary} label="Cancel" onClick={onCancelHandler} />
           </div>
         </div>
       </div>

@@ -5,14 +5,14 @@ import { ButtonVariants } from '../../../stories/Atoms/Inputs/Button.stories';
 interface TooltipProps {
     text: string;
     orientation: 'top' | 'left' | 'right' | 'bottom';
+    buttonLabel: string;
 }
-
-let infoButtonProps = ButtonVariants.info;
 
 export const Tooltip = (
   { 
     text, 
-    orientation = 'top' 
+    orientation = 'top',
+    buttonLabel = "Hover me"
   }: TooltipProps) => 
 {
   const [tooltipState, toggleTooltip] = useState(false)
@@ -84,7 +84,7 @@ export const Tooltip = (
       ref={childrenRef} 
       className='max-w-max'
     >
-      <Button {...infoButtonProps}/>
+      <Button {...ButtonVariants.info} label={buttonLabel}/>
     </div>
   </div>
   )

@@ -36,7 +36,7 @@ FinanceExample.args =
             </div>
             <p className='text-center antialiased mt-1 mb-2'>Fecha de vencimiento: 30/May/2022</p>
             <div className='flex justify-center mt-4'>
-            <Button {...ButtonVariants.info} />
+            <Button {...ButtonVariants.warning} label='Pagar'/>
             </div>
         </div>
     )

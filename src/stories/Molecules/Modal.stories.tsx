@@ -23,8 +23,8 @@ Normal.args =
     <h1 className='text-xl pb-1'>This is a modal content sample</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores voluptates, nobis officia consequuntur voluptas odio maxime. Harum, esse veritatis pariatur at aliquam porro reprehenderit quia numquam cumque corrupti optio voluptate?</p>
     <div className='flex mt-4 justify-end'>
-    <Button {...ButtonVariants.success} /> 
-    <Button {...ButtonVariants.danger} />
+    <Button {...ButtonVariants.success} label='Confirm' /> 
+    <Button {...ButtonVariants.danger} label="Decline"/>
     </div>
   </React.Fragment>
 }
