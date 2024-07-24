@@ -2,7 +2,7 @@ import React from "react";
 import { DayPicker, RangePicker } from "../../../components/Atoms/Inputs/DatePicker";
 
 export default {
-  title: 'DatePicker',
+  title: 'Atoms/Inputs/DatePicker',
   component: DayPicker,
 };
 

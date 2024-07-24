@@ -20,7 +20,7 @@ export function DayPicker()
     <ReactDatePicker
       closeOnScroll={true}
       selected={startDate}
-      className="red-border"
+      className="border border-black shadow-md"
       onChange={(date: Date | null) => 
       {
         if (date) 
@@ -33,25 +33,29 @@ export function DayPicker()
 }
 
 export function RangePicker() {
-  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
-  const [endDate, setEndDate] = useState<Date | undefined>(undefined);
+  const [dateRange, setDateRange] = useState<[Date | undefined, Date | undefined]>([undefined, undefined]);
 
-  const onChange = (dates: [Date | null, Date | null] | null) => {
-    if (dates) {
-      const [start, end] = dates;
-      setStartDate(start ?? undefined);
-      setEndDate(end ?? undefined);
+  const handleDateChange = (update: [Date | null, Date | null] | null) => 
+  {
+    if (update) 
+    {
+      const [start, end] = update;
+      setDateRange([start ?? undefined, end ?? undefined]);
     }
   };
 
+  const [startDate, endDate] = dateRange;
+
   return (
     <ReactDatePicker
+      closeOnScroll={true}
+      selectsRange
       selected={startDate}
-      onChange={onChange}
       startDate={startDate}
       endDate={endDate}
-      selectsRange
-      inline
+      className="border border-black shadow-md"
+      onChange={handleDateChange}
+      isClearable
     />
   );
 }
