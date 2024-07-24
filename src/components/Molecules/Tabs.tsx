@@ -63,7 +63,7 @@ export const Tabss: React.FC<TabsProps> = (
       </TabList>
       {
         tabContents.map((content, index) => (
-          <TabPanel key={index} style={contentStyles}>
+          <TabPanel className="-mt-2" key={index} style={contentStyles}>
             <h2>{content}</h2>
           </TabPanel>
       ))}
