@@ -39,28 +39,49 @@ ContactExample.args = {
 export const TaskListExample = Template.bind({})
 TaskListExample.args = {
   title: 'Task List (Using Cards)',
+  bgColor: "#f7fee7",
+  textColor: "#4d7c0f",
   children: <div className='grid gap-3 grid-cols-3'>
-        <Card title='Go to the groceries store'>
+        <Card  title='Go to the groceries store' 
+          titleTextColor={'#6d28d9'} 
+          titleBgColor={'#ddd6fe'} 
+          containerTextColor={'#6d28d9'} 
+          containerBgColor={"#f4f4f5"}
+          >
             <h1>Shopping list</h1>
-            <ul className='font-light'>
+            <ul className='font-light '>
                 <li>1 Kg. Eggs</li>
                 <li>2 Lt. Milk</li>
                 <li>4 Kg. Vegetables</li>
             </ul>
         </Card>
-        <Card title='Caress the cat'>
-            <div>
-                <div className='px-10'>
-                    <img className='rounded-lg shadow-md mb-4' src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg" alt="A cat" />
+        <Card title='Caress the cat'
+        titleTextColor={'#be185d'} 
+        titleBgColor={'#fbcfe8'} 
+        containerTextColor={'#be185d'} 
+          containerBgColor={"#fdf2f8"}
+        >
+            <div className="flex columns-2 pt-6">
+                <div className='px-2'>
+                    <img className='rounded-lg shadow-md mb-4 max-h-14' src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg" alt="A cat" />
                 </div>
-                <p><b>Date:</b> 01/Aug/2022</p>
-                <p><b>Caress during:</b> 45 Sec.</p>
+                <div>
+                  <p><b>Date:</b> 01/Aug/2022</p>
+                  <p><b>Caress during:</b> 45 Sec.</p>
+                </div>
             </div>
         </Card>
-        <Card title='Do nothing'>
+        <Card title='Do nothing'
+        titleTextColor={'#0284c7'} 
+        titleBgColor={'#bfdbfe'} 
+        containerTextColor={'#0284c7'} 
+          containerBgColor={'#dbeafe'}
+        >
+          <div className='pt-6'>
             <p><b>Date:</b> Today</p>
             <p><b>During: </b> 20 hrs</p>
             <p>😋</p>
+          </div>
         </Card>
     </div>
 
