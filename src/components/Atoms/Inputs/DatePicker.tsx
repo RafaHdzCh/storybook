@@ -1,4 +1,4 @@
-import { getDay } from "date-fns";
+import { getDay, setHours, setMinutes } from "date-fns";
 import React, { useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,6 +7,8 @@ interface DatePickerProps
 {
   children?: React.ReactNode; 
 }
+
+const datePickerClassname = "w-full px-3 py-2 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500";
 
 export const DatePickerComponent: React.FC<DatePickerProps> = ({ children }) => 
 {
@@ -20,9 +22,8 @@ export function DayPicker()
   return (
     <ReactDatePicker
       closeOnScroll={true}
-      selected={startDate}
-      className="border border-black shadow-md"
-      placeholderText="Select a range..."
+      className={datePickerClassname}
+      placeholderText="Select a day..."
       onChange={(date: Date | null) => 
       {
         if (date) 
@@ -41,12 +42,36 @@ export function DayPickerWithTime()
   return (
     <ReactDatePicker
       closeOnScroll={true}
-      selected={startDate}
-      className="border border-black shadow-md"
+      className={datePickerClassname}
       placeholderText="Select a date..."
       timeInputLabel="Time:"
       dateFormat="MM/dd/yyyy h:mm aa"
       showTimeInput
+      onChange={(date: Date | null) => 
+      {
+        if (date) 
+        {
+          SetStartDate(date);
+        }
+      }}
+    />
+  );
+}
+
+export function DayPickerWithSpecificTime() 
+{
+  const [startDate, SetStartDate] = useState<Date>(new Date());
+
+  return (
+    <ReactDatePicker
+      closeOnScroll={true}
+      className={datePickerClassname}
+      placeholderText="Select a date..."
+      timeInputLabel="Time:"
+      minTime={setHours(setMinutes(new Date(), 0), 17)}
+      maxTime={setHours(setMinutes(new Date(), 30), 20)}
+      dateFormat="MM/dd/yyyy h:mm aa"
+      showTimeSelect
       onChange={(date: Date | null) => 
       {
         if (date) 
@@ -79,7 +104,7 @@ export function RangePicker() {
       selected={startDate}
       startDate={startDate}
       endDate={endDate}
-      className="border border-black shadow-md"
+      className={datePickerClassname}
       placeholderText="Select a range"
       onChange={handleDateChange}
       isClearable
@@ -100,7 +125,7 @@ export function WeekdayPicker()
   return (
     <ReactDatePicker
       selected={startDate}
-      className="border border-black shadow-md"
+      className={datePickerClassname}
       filterDate={isWeekday}
       placeholderText="Select a weekday"
       onChange={(date: Date | null) => 
@@ -125,9 +150,8 @@ export function TimePicker()
       timeIntervals={15}
       timeCaption="Time"
       dateFormat="h:mm aa"
-      selected={startDate}
-      className="border border-black shadow-md"
-      placeholderText="Select a range..."
+      className={datePickerClassname}
+      placeholderText="Select a time..."
       onChange={(date: Date | null) => 
       {
         if (date) 
