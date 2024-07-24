@@ -21,11 +21,11 @@ export const Select = (props: SelectComponentProps) =>
   const validDefaultValue = options.some(option => option.value === defaultValue) ? defaultValue : options[0]?.value;
 
   return (
-    <React.Fragment>
-      <label className="block text-gray-700" htmlFor={selectId}>{label}</label>
+    <div className="flex flex-col items-start">
+      <label className="px-40 block text-gray-700" htmlFor={selectId}>{label}</label>
 
       <FluentSelect
-        className="bg-gray-100 border border-gray-800 w-full my-4 mr-80"
+        className="w-full border rounded-md text-gray-700 hover:outline-none hover:ring-2 hover:ring-blue-500"
         id={selectId}
         defaultValue={validDefaultValue}
         {...restProps}
@@ -34,6 +34,6 @@ export const Select = (props: SelectComponentProps) =>
           <option key={option.value} value={option.value}>{option.label}</option>
         ))}
       </FluentSelect>
-    </React.Fragment>
+    </div>
   );
 };
