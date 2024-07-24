@@ -6,6 +6,6 @@ addons.setConfig({
     base: 'dark',
     brandTitle: "RafaHdzCh's Storybook",
     brandUrl: 'https://github.com/RafaHdzCh',
-    brandImage: 'https://https://avatars.githubusercontent.com/u/64990211?v=4',
+    brandImage: 'https://avatars.githubusercontent.com/u/64990211?v=4',
   }),
 });
