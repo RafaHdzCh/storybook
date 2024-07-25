@@ -1,30 +1,62 @@
 import React, { useState } from 'react';
 import { MdArrowDropDown } from 'react-icons/md';
 
-interface Option {
+interface Option 
+{
   value: string;
   label: string;
 }
 
-interface DropdownProps {
+interface DropdownProps 
+{
   label: string | React.ReactElement;
   options?: Option[];
   deployOnHover?: boolean;
   outlined?: boolean;
+  bgColor?: string;
+  textColor?: string;
+  hoverBgColor?: string;
+  hoverTextColor?: string;
 }
 
-export const Dropdown = ({ label, options, deployOnHover = true, outlined = false }: DropdownProps) => {
+export const Dropdown = (
+  { 
+    label, 
+    options, 
+    deployOnHover = true, 
+    outlined = false,
+    bgColor = "#cffafe",
+    textColor = "#0369a1",
+    hoverBgColor = "#bae6fd",
+    hoverTextColor = "#075985",
+
+  }: DropdownProps) => 
+{
   const [dropped, setDrop] = useState(false);
+  const [hover, SetHover] = useState(false);
+
+
+  const normalStyle =
+  {
+    backgroundColor: bgColor,
+    color: textColor,
+  };
+  const hoverStyle =
+  {
+    backgroundColor: hoverBgColor,
+    color: hoverTextColor,
+  };
 
   return (
     <div
-      onMouseEnter={() => deployOnHover && setDrop(true)}
-      onMouseLeave={() => setDrop(false)}
+      onMouseEnter={() => {SetHover(true); setDrop(true)}}
+      onMouseLeave={() => {SetHover(false); setDrop(false)}}
       className='relative'
     >
       <p
         onClick={() => setDrop(!dropped)}
         className={`${outlined ? 'border-[1px]' : ''} bg-white hover:bg-gray-100 cursor-pointer border-gray-500 rounded px-3 py-2 flex justify-between`}
+        style={hover ? hoverStyle : normalStyle}
       >
         <span className='self-center'>
           {label}

@@ -15,6 +15,12 @@ const Template: StoryFn<typeof Dropdown> = (args) => <Dropdown {...args} />;
 export const Normal = Template.bind({});
 Normal.args = {
   label: 'Dropdown',
+  outlined: false,
+  deployOnHover: true,
+  bgColor: "#ecfccb",
+  textColor: "#4d7c0f",
+  hoverBgColor: "#d9f99d",
+  hoverTextColor: "#365314",
   options: [
     {
       value: 'link1',
@@ -29,12 +35,17 @@ Normal.args = {
       label: 'Link 3'
     }
   ],
-  deployOnHover: true
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
   label: 'Dropdown',
+  deployOnHover: true,
+  outlined: true,
+  bgColor: "#cffafe",
+  textColor: "#0369a1",
+  hoverBgColor: "#bae6fd",
+  hoverTextColor: "#075985",
   options: [
     {
       value: 'link1',
@@ -49,6 +60,5 @@ Outlined.args = {
       label: 'Link 3'
     }
   ],
-  deployOnHover: true,
-  outlined: true
+  
 };
