@@ -1,4 +1,5 @@
 import "../src/index.css";
+import "./storybook.css";
 import { themes } from '@storybook/theming';
 
 const preview = {
@@ -18,7 +19,7 @@ const preview = {
         a.id === b.id ? 0 : a.id.localeCompare(b.id, undefined, { numeric: true }),
     },
   },
-  tags: ["autodocs", "autodocs"],
+  tags: ["autodocs"],
 };
 
 export default preview;

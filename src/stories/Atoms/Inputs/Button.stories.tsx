@@ -6,7 +6,8 @@ import { Button } from '../../../components/Atoms/Inputs/Button';
 export default {
   title: 'Atoms/Inputs/Button',
   component: Button,
-  argTypes: {
+  argTypes: 
+  {
     children: { table: { disable: true } },
     icon: { table: { disable: true } },
     bgColor: { control: 'color' },
