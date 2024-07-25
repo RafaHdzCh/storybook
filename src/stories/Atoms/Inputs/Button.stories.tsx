@@ -3,7 +3,8 @@ import { MdAdd } from 'react-icons/md';
 import { StoryFn, Meta } from '@storybook/react';
 import { Button } from '../../../components/Atoms/Inputs/Button';
 
-export default {
+export default 
+{
   title: 'Atoms/Inputs/Button',
   component: Button,
   argTypes: 
@@ -22,7 +23,8 @@ export default {
 const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {
+Normal.args = 
+{
   label: 'NORMAL',
   bgColor: '#eab308',
   bgHover: '#d97706',
@@ -37,7 +39,8 @@ Normal.args = {
 };
 
 export const Outlined = Template.bind({});
-Outlined.args = {
+Outlined.args = 
+{
   label: 'OUTLINED',
   bgColor: '#fefce8',
   bgHover: '#eab308',
@@ -54,7 +57,8 @@ Outlined.args = {
 };
 
 export const Icon = Template.bind({});
-Icon.args = {
+Icon.args = 
+{
   label: 'ICON',
   bgColor: '#eab308',
   bgHover: '#d97706',
@@ -70,7 +74,8 @@ Icon.args = {
 };
 
 export const Floating = Template.bind({});
-Floating.args = {
+Floating.args = 
+{
   children: <MdAdd />,
   bgColor: '#eab308',
   bgHover: '#d97706',
@@ -82,7 +87,8 @@ Floating.args = {
 };
 
 export const FloatingOutlined = Template.bind({});
-FloatingOutlined.args = {
+FloatingOutlined.args = 
+{
   children: <MdAdd />,
   bgColor: '#fefce8',
   bgHover: '#eab308',
@@ -124,6 +130,15 @@ export const ButtonVariants =
     borderColor: '#ef4444',
     borderHover: '#dc2626',
   },
+  info: 
+  {
+    bgColor: "#e3f2fd",        
+    bgHover: "#bbdefb",        
+    textColor: "#0d47a1",      
+    textHover: "#0d47a1",     
+    borderColor: "#bbdefb",    
+    borderHover: "#90caf9"     
+  },
   secondary: 
   {
     bgColor: '#e5e7eb',
@@ -133,13 +148,13 @@ export const ButtonVariants =
     borderColor: '#e5e7eb',
     borderHover: '#d1d5db',
   },
-  info: 
+  primary: 
   {
-    bgColor: "#e3f2fd",        
-    bgHover: "#bbdefb",        
-    textColor: "#0d47a1",      
-    textHover: "#0d47a1",     
-    borderColor: "#bbdefb",    
-    borderHover: "#90caf9"     
-  }
+    bgColor: '#ecfccb',
+    bgHover: '#d9f99d',
+    textColor: '#4d7c0f',
+    textHover: '#3f6212',
+    borderColor: '#bef264',
+    borderHover: '#84cc16',
+  },
 };
