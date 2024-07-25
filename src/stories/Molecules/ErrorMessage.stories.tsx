@@ -1,10 +1,10 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import {ErrorMessage, ErrorMessageProps} from '../../../components/Atoms/General/ErrorMessage';
+import {ErrorMessage, ErrorMessageProps} from '../../components/Molecules/ErrorMessage';
 
 export default 
 {
-  title: "Atoms/General/ErrorMessage",
+  title: "Molecules/ErrorMessage",
   component: ErrorMessage
 } as Meta<typeof ErrorMessage>;
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from '../Inputs/Button';
-import { ButtonVariants } from "../../../stories/Atoms/Inputs/Button.stories";
+import { Button } from '../Atoms/Inputs/Button';
+import { ButtonVariants } from "../../stories/Atoms/Inputs/Button.stories";
 
 export interface ErrorMessageProps 
 {
