@@ -6,11 +6,21 @@ interface CarouselProps {
   height: string;
   width: string;
   timer?: number;
-  dotColor: string;
   bgColor: string;
+  dotColor: string;
+  activeDotColor: string;
 }
 
-export const Carousel: React.FC<CarouselProps> = ({ children, width="75vw", height="30vw", timer, dotColor="#374151", bgColor="#e5e7eb"}) => 
+export const Carousel: React.FC<CarouselProps> = (
+  { 
+    children, 
+    width="75vw", 
+    height="30vw", 
+    timer, 
+    dotColor="#a3a3a3", 
+    bgColor="#e5e5e5",
+    activeDotColor="#404040"
+  }) => 
 {
   const [countPages, setCount] = useState<number>(children.length);
   const [currentPage, setPage] = useState<number>(1);
@@ -79,7 +89,7 @@ export const Carousel: React.FC<CarouselProps> = ({ children, width="75vw", heig
     }
   }, [height, width, children]);
 
-  const renderDots = (currentPage: number, dotColor: string) => {
+  const renderDots = (currentPage: number, dotColor: string, activeDotColor: string) => {
     let dots: React.ReactNode[] = [];
     let styles;
     for (let i = 1; i <= countPages; i++) {
@@ -89,7 +99,7 @@ export const Carousel: React.FC<CarouselProps> = ({ children, width="75vw", heig
         };
       } else {
         styles = {
-          backgroundColor: 'rgb(168 162 158)',
+          backgroundColor: activeDotColor,
         };
       }
       dots.push(
@@ -110,7 +120,7 @@ export const Carousel: React.FC<CarouselProps> = ({ children, width="75vw", heig
         {children}
       </div>
       <div style={{ width }} className='absolute bottom-4 flex justify-center space-x-3'>
-        {renderDots(currentPage, dotColor)}
+        {renderDots(currentPage, activeDotColor, dotColor)}
       </div>
       <div className='text-3xl text-gray-400'>
         <MdArrowForwardIos onClick={() => moveBackward()} className='ml-4 absolute cursor-pointer h-full hover:text-gray-500 inset-y-0 left-0 rotate-180' />

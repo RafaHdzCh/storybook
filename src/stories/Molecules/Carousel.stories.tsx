@@ -18,8 +18,9 @@ AutoSlide.args = {
   timer: 4000,
   height: "30vw",
   width: "75vw",
-  dotColor: "#6d28d9",
-  bgColor: "#c4b5fd",
+  activeDotColor: "#6d28d9",
+  dotColor: "#a5b4fc",
+  bgColor: "#ede9fe",
   children: [
     <section key="1" className='grid place-content-center'>
       <h3 className='text-xl font-bold'>First slide label</h3>
