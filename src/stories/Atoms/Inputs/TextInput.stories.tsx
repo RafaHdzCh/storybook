@@ -2,9 +2,11 @@ import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 import { TextInput } from '../../../components/Atoms/Inputs/TextInput'
 
-export default {
+export default 
+{
   title: 'Atoms/Inputs/TextInput',
   component: TextInput,
+  
   decorators: [
     (Story) => <div style={ {maxWidth: '1000px'} }>
         {Story()}
@@ -15,34 +17,35 @@ export default {
 const Template: StoryFn<typeof TextInput> = (args) => <TextInput {...args} />
 
 export const TextType = Template.bind({})
-TextType.args = {
+TextType.args = 
+{
     label: 'Label',
+    readonly: false,
+    disabled: false,
     placeholder: 'Placeholder',
-    type: 'text'
+    type: 'text',
+    value: "",
 }
 
 export const NumberType = Template.bind({})
-NumberType.args = {
+NumberType.args = 
+{
     label: 'Label',
+    readonly: false,
+    disabled: false,
     placeholder: 'Placeholder',
-    type: 'number'
-}
-
-export const Disabled = Template.bind({})
-Disabled.args = {
-    label: 'Label',
-    disabled: true,
-    placeholder: 'Placeholder',
-    type: 'text',
-    value: 'Disabled'
+    type: 'number',
+    value: "",
 }
 
 export const ReadOnly = Template.bind({})
-ReadOnly.args = {
-    label: 'Label',
+ReadOnly.args = 
+{
+    label: 'ReadOnly:',
     readonly: true,
+    disabled: false,
     placeholder: 'Placeholder',
     type: 'text',
-    value: 'Read Only'
+    value: "",
 }
 

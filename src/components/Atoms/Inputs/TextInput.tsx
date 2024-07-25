@@ -1,41 +1,61 @@
 import React, { useRef } from 'react'
 
-interface InputProps {
-    label?: string;
-    placeholder?: string;
-    type?: 'text' | 'number';
-    value?: string;
-    disabled?: boolean;
-    readonly?: boolean;
-    className?: string;
-    onChange?: (event: any) => void;
+interface InputProps 
+{
+  label?: string;
+  placeholder?: string;
+  type?: 'text' | 'number';
+  value?: string;
+  disabled?: boolean;
+  readonly?: boolean;
+  onChange?: (event: any) => void;
 }
 
-export const TextInput = ({ label, placeholder, value, className, type = 'text', onChange, disabled = false, readonly = false }: InputProps) => {
+export const TextInput = (
+  { 
+    label,
+    placeholder, 
+    type = 'text', 
+    value,
+    disabled = false, 
+    readonly = false, 
+    onChange, 
+  }: InputProps) => 
+{
   const input = useRef<HTMLInputElement | any>()
-
-  const handleOpenFileInput = () => {
-    input?.current?.focus()
-  }
+  const handleOpenFileInput = () => input?.current?.focus()
+  const disabledStyle = "bg-neutral-200 text-neutral-500 cursor-not-allowed"
 
   return (
     <div className='w-full'>
-        <label className='mb-1 block text-lg' onClick={handleOpenFileInput}>{label}</label>
-        <input ref={input}
+      <label 
+        className='mb-1 block text-lg' 
+        onClick={handleOpenFileInput}
+      >
+        {label}
+      </label>
+      <input 
+        ref={input}
         onChange={onChange && onChange}
-        className={`
-        inputStyle
-        rounded-lg 
-        w-full 
-        border-[1px] 
-        border-gray-400/70
-        py-2 px-3
-        ease-out transition-all duration-100
-        ${className} `}
         disabled={disabled}
         readOnly={readonly}
+        type={type} 
+        placeholder={placeholder}
         value={value}
-        type={type} placeholder={placeholder}/>
+        className=
+        {`
+          inputStyle
+          rounded-lg 
+          w-full 
+          border-[1px] 
+          border-gray-400/70
+          py-2 px-3
+          ease-out 
+          transition-all 
+          duration-100
+          ${disabled ? disabledStyle : ""}
+        `}
+      />
     </div>
   )
 }
