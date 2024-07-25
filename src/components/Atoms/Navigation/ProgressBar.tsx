@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ProgressBarProps {
-  progress: number; // Valor de progreso entre 0 y 100
+  progress: number;
   color?: string;
   width?: number | string;
   height?: number;
