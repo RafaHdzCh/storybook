@@ -59,7 +59,8 @@ export const Slider: React.FC<SliderProps> = (
       />
       <div>{internalValue}</div>
       <style jsx>{`
-        .custom-slider::-webkit-slider-thumb {
+        .custom-slider::-webkit-slider-thumb 
+        {
           -webkit-appearance: none;
           background: ${handleColor};
           width: 20px;
@@ -68,7 +69,8 @@ export const Slider: React.FC<SliderProps> = (
           cursor: pointer;
         }
 
-        .custom-slider::-moz-range-thumb {
+        .custom-slider::-moz-range-thumb 
+        {
           background: ${handleColor};
           width: 20px;
           height: 20px;
@@ -76,7 +78,8 @@ export const Slider: React.FC<SliderProps> = (
           cursor: pointer;
         }
 
-        .custom-slider::-ms-thumb {
+        .custom-slider::-ms-thumb 
+        {
           background: ${handleColor};
           width: 20px;
           height: 20px;

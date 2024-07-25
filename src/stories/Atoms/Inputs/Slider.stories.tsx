@@ -13,7 +13,7 @@ export const DefaultSlider = Template.bind({});
 DefaultSlider.args = {
   min: 0,
   max: 100,
-  value: 5,
+  value: 50,
   sizeInPixels: 200,
   step: 1,
   handleColor: '#84cc16',
