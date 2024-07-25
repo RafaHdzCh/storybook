@@ -57,7 +57,7 @@ export const Button: React.FC<ButtonProps> = ({
     ${weight}
     ${shadow ? 'shadow-md' : ''}
     ${outlined ? 'border-2' : ''}
-    ${disabled || loading ? 'cursor-not-allowed' : ''}
+    ${disabled || loading ? 'cursor-not-allowed bg-neutral-200 text-neutral-500 border-neutral-500' : ''}
     rounded
     transition-all
     duration-200
@@ -68,15 +68,15 @@ export const Button: React.FC<ButtonProps> = ({
   `;
 
   const styles = {
-    backgroundColor: disabled || loading ? '#e5e7eb' : (hovered ? bgHover : bgColor),
-    color: disabled || loading ? '#4b5563' : (hovered ? textHover : textColor),
-    borderColor: disabled || loading ? '#4b5563' : (hovered ? borderHover : borderColor),
+    color: hovered ? textHover : textColor,
+    backgroundColor: hovered ? bgHover : bgColor,
+    borderColor: hovered ? borderHover : borderColor,
   };
 
   return (
     <button
       className={baseClasses}
-      style={styles}
+      style={disabled ? {} : styles}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={(ev) => !disabled && !loading && onClick && onClick(ev)}
