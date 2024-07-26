@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-export interface SliderProps 
-{
+export interface SliderProps {
   min: number;
   max: number;
   step?: number;
@@ -14,18 +13,17 @@ export interface SliderProps
 }
 
 export const Slider: React.FC<SliderProps> = (
-  { 
-    min, 
-    max, 
-    step = 1, 
-    value, 
+  {
+    min,
+    max,
+    step = 1,
+    value,
     handleColor,
     trackColor,
     trackActiveColor,
-    onChange, 
-    sizeInPixels = 200 
-  }) => 
-{
+    onChange,
+    sizeInPixels = 200
+  }) => {
   const [internalValue, setInternalValue] = useState(value);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,10 +56,12 @@ export const Slider: React.FC<SliderProps> = (
         className="custom-slider"
       />
       <div>{internalValue}</div>
-      <style jsx>{`
+      <style>
+      {`
         .custom-slider::-webkit-slider-thumb 
         {
           -webkit-appearance: none;
+          appearance: none;
           background: ${handleColor};
           width: 20px;
           height: 20px;
@@ -86,7 +86,12 @@ export const Slider: React.FC<SliderProps> = (
           border-radius: 50%;
           cursor: pointer;
         }
-      `}</style>
+
+        .custom-slider:active::-webkit-slider-thumb {
+          cursor: grabbing;
+        }
+      `}
+      </style>
     </div>
   );
 };
