@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PulseLoader } from 'react-spinners';
+import {PulseLoader} from '../../../components/Atoms/Navigation/PulseLoader';
 
 interface ButtonProps {
   label?: string;
@@ -82,7 +82,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={(ev) => !disabled && !loading && onClick && onClick(ev)}
       disabled={disabled || loading}
     >
-      {loading ? <PulseLoader className='mr-4' size={5} color='#4b5563'/> : icon && <span className={`mr-2`}>{icon}</span>}
+      {loading ? <PulseLoader className='mr-4' size="xs" color='#4b5563'/> : icon && <span className={`mr-2`}>{icon}</span>}
       <span className='py-1'>{label || children}</span>
     </button>
   );
