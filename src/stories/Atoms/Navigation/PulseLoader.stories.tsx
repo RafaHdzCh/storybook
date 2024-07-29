@@ -17,8 +17,8 @@ export default {
 
 const Template: StoryFn<typeof PulseLoader> = (args) => <PulseLoader {...args} />;
 
-export const SpinnerDefault = Template.bind({});
-SpinnerDefault.args = {
+export const PulseLoaderDefault = Template.bind({});
+PulseLoaderDefault.args = {
   color: '#36d7b7',
   size: 'md',
   speedMultiplier: 1,
