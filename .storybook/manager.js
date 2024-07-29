@@ -1,7 +1,8 @@
 import { addons } from '@storybook/addons';
 import { create } from '@storybook/theming';
 
-const darkTheme = create({
+const darkTheme = create(
+{
   base: 'dark',
   brandTitle: "RafaHdzCh's Storybook",
   brandUrl: 'https://github.com/RafaHdzCh',
