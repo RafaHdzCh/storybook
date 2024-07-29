@@ -7,8 +7,8 @@ const darkTheme = create(
   brandTitle: "RafaHdzCh's Storybook",
   brandUrl: 'https://github.com/RafaHdzCh',
   brandImage: 'https://avatars.githubusercontent.com/u/64990211?v=4',
-  colorPrimary: '#3A10E5',
-  colorSecondary: '#585C6D',
+  colorPrimary: '#a21caf',
+  colorSecondary: '#5b21b6',
 
   // UI
   appBg: '#0d1117',
