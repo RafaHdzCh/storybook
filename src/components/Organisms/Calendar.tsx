@@ -44,9 +44,9 @@ const TaskCard: React.FC<TaskInterface | any> = ({ onChange, id, title, descript
       description,
       date
     }
-    let filteredTasks = cookies.tasks.filter(task => task.id !== id)
+    let filteredTasks = cookies.tasks.filter((task: { id: any; }) => task.id !== id)
     setCookie('tasks', JSON.stringify([...filteredTasks]), { path: '/' } )
-    setTask(tasks.filter(task => task.id !== id))
+    setTask(tasks.filter((task: { id: any; }) => task.id !== id))
     onChange(task)
   }
 
@@ -57,7 +57,7 @@ const TaskCard: React.FC<TaskInterface | any> = ({ onChange, id, title, descript
       description,
       date
     }
-    let filteredTasks = cookies.tasks.filter(task => task.id !== id)
+    let filteredTasks = cookies.tasks.filter((task: { id: any; }) => task.id !== id)
     setCookie('tasks', JSON.stringify([task, ...filteredTasks]), { path: '/' } )
     setEditTile(false)
     onChange(task)
@@ -70,7 +70,7 @@ const TaskCard: React.FC<TaskInterface | any> = ({ onChange, id, title, descript
       description: descriptionValue,
       date
     }
-    let filteredTasks = cookies.tasks.filter(task => task.id !== id)
+    let filteredTasks = cookies.tasks.filter((task: { id: any; }) => task.id !== id)
     setCookie('tasks', JSON.stringify([task, ...filteredTasks]), { path: '/' } )
     setEditDescription(false)
     onChange(task)
@@ -79,7 +79,7 @@ const TaskCard: React.FC<TaskInterface | any> = ({ onChange, id, title, descript
   useEffect(() => {
     setTitleValue(title)
     setDescriptionValue(description)
-  }, [title])
+  }, [description, title])
 
   return <div className='py-3' onMouseEnter={() => showOptions(true)} onMouseLeave={() => showOptions(false)}>
     <SweetAlert type='success' show={alert} label='Complete task?' text='It will remove the task from the task list' onCancel={() => showAlert(false)} onConfirm={() => completeTask()} />
@@ -155,7 +155,7 @@ const Day:React.FC<DayProps> = ({ date, month, onChange }) =>
 
   const addTask = () => {
     let taskCookies = cookies?.tasks || []
-    let id = taskCookies.length ? Math.max(...taskCookies.map(o => o.id)) + 1 : 0
+    let id = taskCookies.length ? Math.max(...taskCookies.map((o: { id: any; }) => o.id)) + 1 : 0
     let newTask = {
       id,
       title: taskTitle,
@@ -175,7 +175,7 @@ const Day:React.FC<DayProps> = ({ date, month, onChange }) =>
       taskArray.push(task)
     })
     setTask(taskArray)
-  }, [date])
+  }, [cookies.tasks, date])
 
   return (
   <div className="relative">
