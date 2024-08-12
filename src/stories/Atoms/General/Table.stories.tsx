@@ -7,7 +7,7 @@ export default {
   component: Table,
   argTypes: {
     headers: {
-      control: 'object', 
+      control: 'object',
       description: 'Headers of the table',
     },
     rows: {
