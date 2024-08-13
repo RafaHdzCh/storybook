@@ -908,6 +908,9 @@ video {
 .max-w-min {
   max-width: min-content;
 }
+.flex-grow {
+  flex-grow: 1;
+}
 .grow {
   flex-grow: 1;
 }
@@ -1699,6 +1702,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
+.hover\:bg-gray-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
 .hover\:bg-rose-100\/80:hover {
   background-color: rgb(255 228 230 / 0.8);
 }
@@ -1805,4 +1812,4 @@ video {
 }
 
 
-/*# sourceMappingURL=main.7e8813f3.css.map*/
+/*# sourceMappingURL=main.8ae2f309.css.map*/
